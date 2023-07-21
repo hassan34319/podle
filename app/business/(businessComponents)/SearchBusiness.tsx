@@ -11,6 +11,16 @@ type Props = {
   claimManual: boolean;
   setClaimManual: (value: boolean) => void;
 };
+interface BusinessInfo {
+  title: string;
+  businessName: string;
+  streetAddress: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  phoneNumber?: string; // Optional field for phone number
+  searchResult: string; // Field to store the search result
+}
 
 function SearchBusiness({
   claimAuto,
@@ -22,19 +32,63 @@ function SearchBusiness({
   //   The actual input inputted by the users
   const [searchInput, setSearchInput] = useState<string>("");
   //   The results got from user's search
-  const [searchResults, setSearchResults] = useState<string[]>([]);
+  const [searchResults, setSearchResults] = useState<BusinessInfo[]>([]);
   //   Handles if user is still doing activity or is waiting for results
   const [showNoResultsMessage, setShowNoResultsMessage] =
     useState<boolean>(false);
   // The selected business by user from context
   const { addBusiness, business } = useStateContext();
 
-  const dummyData: string[] = [
-    "Jam Street Media, 123 ABC St, Los Angeles, CA 73738",
-    "Pizza Hut, New York City, Street 4",
-    "Pizza Max, London, Street 4",
-    "McDonald's, Los Angeles, Avenue 5",
+  const dummyData: BusinessInfo[] = [
+    {
+      title: "Jam Street Media",
+      businessName: "Jam Street Media",
+      streetAddress: "123 ABC St",
+      city: "Los Angeles",
+      state: "CA",
+      zipCode: "73738",
+      phoneNumber: "123-456-7890",
+      searchResult: "", // Leave this empty for now
+    },
+    {
+      title: "Pizza Hut",
+      businessName: "Pizza Hut",
+      streetAddress: "New York City, Street 4",
+      city: "New York City",
+      state: "NY",
+      zipCode: "10001",
+      phoneNumber: "987-654-3210",
+      searchResult: "", // Leave this empty for now
+    },
+    {
+      title: "Pizza Max",
+      businessName: "Pizza Max",
+      streetAddress: "London, Street 4",
+      city: "London",
+      state: "LDN",
+      zipCode: "W1",
+      phoneNumber: "555-123-4567",
+      searchResult: "", // Leave this empty for now
+    },
+    {
+      title: "McDonald's",
+      businessName: "McDonald's",
+      streetAddress: "Los Angeles, Avenue 5",
+      city: "Los Angeles",
+      state: "CA",
+      zipCode: "90210",
+      phoneNumber: "111-222-3333",
+      searchResult: "", // Leave this empty for now
+    },
   ];
+
+  // Calculate the search result for each entry
+  dummyData.forEach((entry) => {
+    const { businessName, streetAddress, city, state, zipCode } = entry;
+    entry.searchResult = `${businessName}, ${streetAddress}, ${city}, ${state} ${zipCode}`;
+  });
+
+  console.log(dummyData);
 
   //  Handles the change in user input
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,13 +98,14 @@ function SearchBusiness({
   // Handles when user presses search Icon
   const handleSearchSubmit = () => {
     const filteredResults = dummyData.filter((address) =>
-      address.toLowerCase().includes(searchInput.toLowerCase())
+      address.searchResult.toLowerCase().includes(searchInput.toLowerCase())
     );
+
     setSearchResults(filteredResults);
-    setShowNoResultsMessage(true); // Show the "No results found" message when search button is clicked
+    setShowNoResultsMessage(true); // Show the "No results found" message when the search button is clicked
   };
   //   Handles when user Selects a business
-  const handleSelectBusiness = (address: string) => {
+  const handleSelectBusiness = (address: BusinessInfo) => {
     // Adds Business to context
     addBusiness(address);
     // Changes Component to claim component
@@ -114,9 +169,9 @@ function SearchBusiness({
                     <button
                       className="w-full text-start block ml-4 text-black font-normal py-3"
                       onClick={() => handleSelectBusiness(address)}
-                      key={address}
+                      key={address.title}
                     >
-                      {address}
+                      {address.searchResult}
                     </button>
                   ))}
                 </div>
@@ -138,7 +193,8 @@ function SearchBusiness({
           </div>
           <div className="absolute bottom-[5vh] right-[10vh]">
             <button
-              className={`bg-[#1F1E21] border-[#969694] border-[1px] font-medium text-sm ${inter.className} text-white px-8 py-3 `} onClick={handleSkipClick}
+              className={`bg-[#1F1E21] border-[#969694] border-[1px] font-medium text-sm ${inter.className} text-white px-8 py-3 `}
+              onClick={handleSkipClick}
             >
               SKIP FOR NOW
             </button>

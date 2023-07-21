@@ -17,6 +17,9 @@ function ClaimBusinessManual({
   setClaimManual,
   setClaimAuto,
 }: Props) {
+  const handleBackClick = () => {
+    setClaimManual(false);
+  };
   return (
     <>
       {!claimAuto && claimManual && (
@@ -37,7 +40,7 @@ function ClaimBusinessManual({
           </div>
           <button
             className={`font-medium text-sm ${inter.className} pl-[8%] pt-[1vh] text-white underline  `}
-            //   onClick={() => router.push("/signup")}
+            onClick={handleBackClick}
           >
             Back
           </button>

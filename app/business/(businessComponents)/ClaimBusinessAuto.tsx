@@ -2,6 +2,8 @@ import React from "react";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import { inter } from "@/app/utils/inter";
 import { useStateContext } from "@/app/context/stateContext";
+import { Router } from "next/router";
+import { useRouter } from "next/navigation";
 type Props = {
   claimAuto: boolean;
   claimManual: boolean;
@@ -10,14 +12,11 @@ type Props = {
 };
 
 function ClaimBusinessAuto({ claimAuto, setClaimAuto, claimManual,setClaimManual }: Props) {
+  const router = useRouter()
   const { business } = useStateContext();
   console.log(business);
-  const handleBackClick = () => {
-    setClaimAuto(false)
-  }
   const handleSkipClick = () => {
     setClaimAuto(false)
-    setClaimManual(true)
   }
   return (
     <>
@@ -35,7 +34,7 @@ function ClaimBusinessAuto({ claimAuto, setClaimAuto, claimManual,setClaimManual
             className={`mt-[8vh] rounded-lg bg-white box-border w-[40%] border-[1px] ${inter.className} border-solid border-black flex items-center justify-center rounded-xl `}
           >
             <p className="text-black font-bold text-xl py-8 px-10 text-start">
-              {business}
+              {business.searchResult}
             </p>
           </div>
           <div className="w-[40%] flex justify-between mt-[5vh]">
@@ -47,7 +46,7 @@ function ClaimBusinessAuto({ claimAuto, setClaimAuto, claimManual,setClaimManual
             </button>
             <button
               className={`bg-[#16A235] border-white  bg-opacity-80 border-[0.5px] font-medium  ${inter.className} text-white w-[45%] py-2 `}
-              // onClick={handleBackClick}
+              onClick={()=>router.push('/checkout')}
             >
               CLAIM NOW
             </button>
