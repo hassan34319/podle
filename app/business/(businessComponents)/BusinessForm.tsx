@@ -1,5 +1,7 @@
 import { useStateContext } from "@/app/context/stateContext";
 import { inter } from "@/app/utils/inter";
+import { useRouter } from "next/navigation";
+import Router from "next/router";
 import { useState } from "react"; // Don't forget to import useState
 
 type Props = {};
@@ -24,6 +26,7 @@ function BusinessForm({}: Props) {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
     const {addBusiness} = useStateContext()
+    const router = useRouter()
   const handleSubmitForm = () => {
     const BusinessInformation: BusinessInfo = {
       title: businessName,
@@ -36,6 +39,7 @@ function BusinessForm({}: Props) {
     };
 
     addBusiness(BusinessInformation)
+    router.push('/checkout')
   };
 
   return (
