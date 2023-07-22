@@ -39,7 +39,7 @@ function BusinessForm({}: Props) {
     };
 
     addBusiness(BusinessInformation)
-    router.push('/checkout')
+    router.push('/selectServices')
   };
 
   return (

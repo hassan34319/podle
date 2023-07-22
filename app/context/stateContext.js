@@ -5,10 +5,22 @@ const Context = createContext();
 
 export const StateContext = ({ children }) => {
   const [business, setBusiness] = useState("");
-
+  const [email, setEmail] = useState("");
+  const [selectedCategory, putSelectedCategory] = useState("Podcast Production Companies");
+  const [selectedPage, putSelectedPage] = useState(1)
     const addBusiness = (new_business) => {
         setBusiness(new_business)
     }
+    const addEmail = (new_email) => {
+        setEmail(new_email)
+    }
+    const setSelectedCategory = (text) => {
+      putSelectedCategory(text)
+    }
+    const setSelectedPage = (num) => {
+      putSelectedPage(num)
+    }
+    
 
 
   
@@ -17,7 +29,13 @@ export const StateContext = ({ children }) => {
     <Context.Provider
       value={{
         business,
-        addBusiness
+        addBusiness,
+        email,
+        addEmail,
+        selectedCategory,
+        setSelectedCategory,
+        selectedPage,
+        setSelectedPage
       }}
     >
       {children}

@@ -40,7 +40,7 @@ function SignupContent({}: Props) {
           <span className="font-medium text-start">
             Already have an account?{"   "}
           </span>
-          <span className="font-bold text-[#16A235] ml-1">Log in</span>
+          <Link href="/login" className="font-bold text-[#16A235] ml-1">Log in</Link>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import React from "react";
 
 type Props = {};
 
-function SignupImage({}: Props) {
+function LoginImage({}: Props) {
   return (
     <section className="relative md:col-span-4 h-[100vh] flex items-end justify-end top-0 right-0">
       <Image
@@ -16,5 +16,4 @@ function SignupImage({}: Props) {
   );
 }
 
-export default SignupImage;
-
+export default LoginImage;

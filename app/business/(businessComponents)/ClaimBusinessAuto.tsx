@@ -46,7 +46,7 @@ function ClaimBusinessAuto({ claimAuto, setClaimAuto, claimManual,setClaimManual
             </button>
             <button
               className={`bg-[#16A235] border-white  bg-opacity-80 border-[0.5px] font-medium  ${inter.className} text-white w-[45%] py-2 `}
-              onClick={()=>router.push('/checkout')}
+              onClick={()=>router.push('/selectServices')}
             >
               CLAIM NOW
             </button>

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Footer from './(LandingComponents)/Footer'
+import Footer from './(UIComponents)/Footer'
 import LandingHero from './(LandingComponents)/LandingHero'
 import PodcastServices from './(LandingComponents)/PodcastServices'
 

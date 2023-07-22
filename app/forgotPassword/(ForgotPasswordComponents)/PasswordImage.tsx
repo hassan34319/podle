@@ -3,11 +3,11 @@ import React from "react";
 
 type Props = {};
 
-function SignupImage({}: Props) {
+function PasswordImage({}: Props) {
   return (
     <section className="relative md:col-span-4 h-[100vh] flex items-end justify-end top-0 right-0">
       <Image
-        src="/podcastGirl2.png"
+        src="/forgotPhoto.png"
         alt="Podcast Girl"
         className="object-cover"
         fill
@@ -16,5 +16,4 @@ function SignupImage({}: Props) {
   );
 }
 
-export default SignupImage;
-
+export default PasswordImage;
