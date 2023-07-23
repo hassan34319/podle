@@ -1,3 +1,63 @@
+export const ReviewerData = [
+  {
+    title: "John Doe",
+    image: "/reviewer1.png",
+    description:
+      "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut al. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut al.",
+    date: "11/07/2023"
+  },
+  {
+    title: "Jane Smith",
+    image: "/reviewer2.png",
+    description:
+      "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut al. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut al.",
+    date: "12/07/2023"
+  },
+  {
+    title: "Michael Johnson",
+    image: "/reviewer3.png",
+    description:
+      "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut al. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut al.",
+    date: "13/07/2023"
+  },
+  {
+    title: "Emily Williams",
+    image: "/reviewer4.png",
+    description:
+      "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut al. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut al.",
+    date: "14/07/2023"
+  }
+];
+export const SampleServices = [
+  {
+    Title: "Content Editing",
+    Category: "Writing & Creating",
+    Image: "/sample1.png",
+    Rating: 4,
+    Price: "$100"
+  },
+  {
+    Title: "Graphic Design",
+    Category: "Design & Art",
+    Image: "/sample2.png",
+    Rating: 5,
+    Price: "$150"
+  },
+  {
+    Title: "Web Development",
+    Category: "Technology & Programming",
+    Image: "/sample3.png",
+    Rating: 3,
+    Price: "$200"
+  },
+  {
+    Title: "Photography Basics",
+    Category: "Photography",
+    Image: "/sample4.png",
+    Rating: 2,
+    Price: "$80"
+  }
+];
 export const Categorydataset = [
     // Category: Podcast Production Companies (6 products)
     {

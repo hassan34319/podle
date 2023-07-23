@@ -8,6 +8,8 @@ export const StateContext = ({ children }) => {
   const [email, setEmail] = useState("");
   const [selectedCategory, putSelectedCategory] = useState("Podcast Production Companies");
   const [selectedPage, putSelectedPage] = useState(1)
+  const [samplePage, putSamplePage] = useState(1)
+  const [selectedArrow, putSelectedArrow] = useState("")
     const addBusiness = (new_business) => {
         setBusiness(new_business)
     }
@@ -19,6 +21,13 @@ export const StateContext = ({ children }) => {
     }
     const setSelectedPage = (num) => {
       putSelectedPage(num)
+    }
+    const setSelectedArrow = (text) => {
+      putSelectedArrow(text)
+    }
+
+    const setSamplePage = (num) => {
+      putSamplePage(num)
     }
     
 
@@ -35,7 +44,11 @@ export const StateContext = ({ children }) => {
         selectedCategory,
         setSelectedCategory,
         selectedPage,
-        setSelectedPage
+        setSelectedPage,
+        setSamplePage,
+        setSelectedArrow,
+        samplePage,
+        selectedArrow
       }}
     >
       {children}

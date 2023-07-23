@@ -42,7 +42,7 @@ export  async function POST(
           },
         ],
         mode: 'payment',
-        success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
+        success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/user`,
         cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
       });
       console.log(session)
