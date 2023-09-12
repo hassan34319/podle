@@ -6,7 +6,7 @@ type Props = {};
 function BusinessImage({}: Props) {
   return (
     <div className="col-span-1 flex flex-col items-center justify-center h-full space-y-4">
-      <div className="w-[70%] h-[80%] bg-white relative flex justify-center items-center border-black border-[1px]">
+      <div className="lg:w-[70%] md:w-[80%] w-[90%] md:h-[80%] h-[20rem] bg-white relative flex justify-center items-center border-black border-[1px]">
         {/* Image Icon */}
         <svg
           width="100"

@@ -13,7 +13,7 @@ function Category({text}: Props) {
         setSelectedCategory(text)
     }
   return (
-    <div onClick={toggleSelected} className={` h-[4vh]   py-4 cursor-pointer flex items-center justify-between px-4 rounded-lg ${inter.className} font-normal ${text === selectedCategory? 'bg-black text-white border-white border-[1px] border-opacity-100': 'border-black border-[0.5px] border-opacity-50 text-black bg-white'}`}>
+    <div onClick={toggleSelected} className={`text-xs md:text-base h-[4vh]   py-4 cursor-pointer flex items-center justify-between px-4 rounded-lg ${inter.className} font-normal ${text === selectedCategory? 'bg-black text-white border-white border-[1px] border-opacity-100': 'border-black border-[0.5px] border-opacity-50 text-black bg-white'}`}>
       {text}
     </div>
   );

@@ -17,28 +17,28 @@ function Content({}: Props) {
   };
 
   return (
-    <div className="col-span-1 mt-5 flex-col md:mr-12 mr-3 md:ml-0 ml-3">
+    <div className="col-span-1 mt-5 flex-col lg:mr-12 mr-3 lg:ml-0 ml-3">
       <Navbar />
-      <div className="mt-[10vh] 2xl:mt-[4vh]">
-        <h1 className="font-extrabold text-6xl ml-2 mb-[6vh] 2xl:mb-[4vh]">
+      <div className="lg:mt-[10vh] mt-[2vh] 2xl:mt-[4vh]">
+        <h1 className="font-extrabold lg:text-6xl ml-2 lg:mb-[6vh] mb-[3vh] 2xl:mb-[4vh] text-3xl">
           Welcome to Podle!
         </h1>
         {/* Main Content */}
-        <div className="relative text-3xl ml-2 text-black text-left inline-block font-satoshi">
+        <div className="relative lg:text-3xl text-lg ml-2 text-black text-left inline-block font-satoshi">
           <p className="m-0 font-medium">Unleash your podcast's potential! </p>
           <p className="m-0">
-            <b className="">Discover</b>
+            <b className="font-extrabold">Discover</b>
             <span className="font-medium">{`, `}</span>
-            <b className="">compare</b>
+            <b className="font-extrabold">compare</b>
             <span className="font-medium">{`, and `}</span>
-            <b className="font-satoshi">book</b>
+            <b className="font-extrabold">book</b>
             <span className="font-medium">
               {" "}
               top-notch services for production, hosting, editing and more.
             </span>
           </p>
-          <p className="m-0 font-medium hidden xl:block">&nbsp;</p>
-          <p className="m-0 font-medium hidden xl:block">
+          <p className="m-0 font-medium ">&nbsp;</p>
+          <p className="m-0 font-medium">
             Leave reviews, make informed decisions, and amplify your podcasting
             game. Join our user-friendly platform and unlock success for your
             show.

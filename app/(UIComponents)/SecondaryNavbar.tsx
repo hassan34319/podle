@@ -13,7 +13,7 @@ function SecondaryNavbar({}: Props) {
   console.log(pathname)
 
   return (
-    <div className="h-[13vh] w-full bg-[#E8DFCC] flex flex-row items-center px-10 pt-4">
+    <div className="h-[13vh] w-full bg-[#E8DFCC] md:flex flex-row items-center px-10 pt-4 hidden">
       <Link href="/" className="cursor-pointer">
       <Logo />
       </Link>
@@ -55,7 +55,7 @@ function SecondaryNavbar({}: Props) {
       </div>
       <div className="relative w-1/5 h-full py-10">
         <Image
-          src="/Profile.png"
+          src="/proff.png"
           alt="Profile Icon"
           fill
           className="object-contain"

@@ -6,21 +6,25 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import { useStateContext } from "@/app/context/stateContext";
+import MobileLogo from "@/app/(UIComponents)/MobileLogo";
 type Props = {};
 
 function ResetEmailContent({}: Props) {
   const router = useRouter();
   const {email} = useStateContext()
   return (
-    <div className="h-[85vh]">
+    <div className="h-[100vh] md:h-[85vh]">
       {/* Logo */}
-      <div className="pl-14 pt-12">
+      <div className="md:pl-14 md:pt-12">
         <Link href="/">
           <Logo />
         </Link>
+        <div className="flex items-start pt-[3vh] justify-center z-30 w-full h-full">
+        <MobileLogo />
+      </div>
       </div>
       {/* Main Content */}
-      <div className="mt-[20vh] flex flex-col items-center mx-[35%]">
+      <div className="md:mt-[20vh] h-[85vh] flex flex-col items-center md:justify-start justify-center lg:mx-[35%] md:w-[80%] lg:w-[30%] w-[90%] mx-auto">
         <h1 className="font-bold text-3xl text-center">Check Your Email</h1>
         <p className="font-normal text-lg my-[3vh] text-center">
           We sent a password reset link to {email}

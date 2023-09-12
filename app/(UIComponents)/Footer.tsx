@@ -8,10 +8,10 @@ type Props = {};
 
 function Footer({}: Props) {
   return (
-    <section className="mt-16 ml-[20%] mr-[35%] pb-[5vh]">
+    <section className="mt-16 md:ml-[20%] md:mr-[35%] pb-[5vh] w-[90%] md:w-[45%] mx-auto">
       <div className="flex flex-row justify-between items-start pb-[10vh]">
         {/* Footer Navbar */}
-        <div className="flex-col flex space-y-5 justify-start">
+        <div className="flex-col flex space-y-5 justify-start text-xs md:text-base">
           <Link href="/about" className="font-bold">
             ABOUT
           </Link>
@@ -28,27 +28,29 @@ function Footer({}: Props) {
             PODLE TERMS OF SERVICE
           </Link>
         </div>
-        <div className="flex-col flex space-y-2 justify-start">
-          <Link href="/about" className="font-bold ml-2 mb-4">
+        <div className="flex-col flex space-y-2 justify-start items-center">
+          <Link href="/about" className="text-xs md:text-base font-extrabold ml-2 mb-4">
             GET THE MOBILE APP
           </Link>
+          <div className="relative md:w-[200px] md:h-[60px] w-[150px] h-[45px]">
           <Image
             src="/app_store.png"
             alt="App store"
-            width={200}
-            height={60}
-            className="mr-2"
+            fill
+            className="mr-2 object-contain"
           ></Image>
+          </div>
+          <div className="relative md:w-[200px] md:h-[60px] w-[150px] h-[45px]">
           <Image
             src="/google_play_icon2.png"
             alt="Google store"
-            width={200}
-            height={60}
-            className="ml-[0.4rem]"
+            fill
+            className="mr-2 object-contain"
           ></Image>
+          </div>
         </div>
       </div>
-      <p className="flex-row flex font-medium items-center ">
+      <p className="flex-row flex font-medium items-center text-xs md:text-base justify-center md:justify-start ">
         <RiCopyrightLine height={4} width={4} className="mr-2"/>
         Copyright Podle, Inc. 2023. All Rights Reserved{" "}
       </p>

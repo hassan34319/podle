@@ -43,9 +43,9 @@ function BusinessForm({}: Props) {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center mt-2">
       {/* Business Name */}
-      <div className="bg-white h-[6vh] w-[70%] border-black border-[0.5px] border-opacity-50 flex items-center mb-5">
+      <div className="bg-white h-[6vh] lg:w-[70%] md:w-[80%] w-[90%] border-black border-[0.5px] border-opacity-50 flex items-center mb-5">
         <input
           className={`${inter.className} font-normal px-3 text-black focus:outline-none`}
           placeholder="Business name *"
@@ -56,7 +56,7 @@ function BusinessForm({}: Props) {
       </div>
 
       {/* Street Address */}
-      <div className="bg-white h-[6vh] w-[70%] border-black border-b-0 border-[0.5px] border-opacity-50 flex items-center ">
+      <div className="bg-white h-[6vh] lg:w-[70%] md:w-[80%] w-[90%] border-black border-b-0 border-[0.5px] border-opacity-50 flex items-center ">
         <input
           className={`${inter.className} font-normal px-3 text-black focus:outline-none`}
           placeholder="Street Address *"
@@ -67,7 +67,7 @@ function BusinessForm({}: Props) {
       </div>
 
       {/* Apartment/Suite/Unit */}
-      <div className="bg-white h-[6vh] w-[70%] border-black border-[0.5px] border-opacity-50 flex items-center mb-5">
+      <div className="bg-white h-[6vh] lg:w-[70%] md:w-[80%] w-[90%] border-black border-[0.5px] border-opacity-50 flex items-center mb-5">
         <input
           className={`${inter.className} font-normal px-3 text-black w-full focus:outline-none`}
           placeholder="Apt, Suite, Unit, Building (optional) "
@@ -77,7 +77,7 @@ function BusinessForm({}: Props) {
       </div>
 
       {/* City */}
-      <div className="bg-white h-[6vh] w-[70%] border-black border-[0.5px] border-opacity-50 flex items-center mb-5">
+      <div className="bg-white h-[6vh] lg:w-[70%] md:w-[80%] w-[90%] border-black border-[0.5px] border-opacity-50 flex items-center mb-5">
         <input
           className={`${inter.className} font-normal px-3 text-black focus:outline-none`}
           placeholder="City *"
@@ -88,7 +88,7 @@ function BusinessForm({}: Props) {
       </div>
 
       {/* State */}
-      <div className=" mb-5 flex flex-row h-[6vh] justify-between w-[70%] bg-transparent">
+      <div className=" mb-5 flex flex-row h-[6vh] justify-between lg:w-[70%] md:w-[80%] w-[90%] bg-transparent">
         <div className="bg-white h-[6vh] w-[45%] border-black border-[0.5px] border-opacity-50 flex items-center justify-between">
           <input
             className={`${inter.className}  overflow-hidden whitespace-nowrap font-normal  text-black bg-transparent px-3 focus:outline-none`}
@@ -111,7 +111,7 @@ function BusinessForm({}: Props) {
       </div>
 
       {/* Phone Number */}
-      <div className="bg-white h-[6vh] w-[70%] border-black border-[0.5px] border-opacity-50 flex items-center mb-5">
+      <div className="bg-white h-[6vh] lg:w-[70%] md:w-[80%] w-[90%] border-black border-[0.5px] border-opacity-50 flex items-center mb-5">
         <input
           className={`${inter.className} font-normal px-3 text-black border-transparent focus:outline-none`}
           placeholder="Phone Number *"
@@ -123,7 +123,7 @@ function BusinessForm({}: Props) {
 
       {/* Password */}
       <div
-        className={`bg-white ${inter.className} h-[6vh] w-[70%] border-black border-[0.5px] border-opacity-50 flex items-center mb-5`}
+        className={`bg-white ${inter.className} h-[6vh] lg:w-[70%] md:w-[80%] w-[90%] border-black border-[0.5px] border-opacity-50 flex items-center mb-5`}
       >
         <input
           type="password"

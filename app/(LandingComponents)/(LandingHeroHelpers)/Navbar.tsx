@@ -5,9 +5,9 @@ type Props = {};
 
 function Navbar({}: Props) {
   return (
-    <div className="flex flex-row lg:space-x-24 space-x-12 ">
+    <div className=" flex-row lg:space-x-24 space-x-12 md:space-x-4 hidden md:flex w-full  ">
       <div
-        className={`${inter.className} flex flex-row justify-center items-center lg:space-x-8 space-x-4 cursor-pointer`}
+        className={`${inter.className} flex flex-row justify-center items-center lg:space-x-8 space-x-4 cursor-pointer md:text-xs lg:text-base`}
       >
         <Link href="/services" className="font-medium cursor-pointer">
           Podcast Services
@@ -30,9 +30,9 @@ function Navbar({}: Props) {
       </div>
       <Link
         href="/signup"
-        className="cursor-pointer relative bg-black  overflow-hidden flex flex-row lg:py-2 lg:px-6 px-2 py-1 rounded-sm md:rounded-none box-border items-center justify-center text-left  text-white font-inter"
+        className="cursor-pointer relative bg-black  overflow-hidden flex flex-row md:py-2 md:px-6 px-2 py-1 rounded-sm md:rounded-none box-border items-center justify-center text-left  text-white font-inter "
       >
-        <b className="relative">Sign Up</b>
+        <b className="relative text-xs">Sign Up</b>
       </Link>
     </div>
   );

@@ -46,7 +46,7 @@ const CheckoutContent = (props: Props) => {
       });
 
       const data = await response.json();
-      console.log(data)
+      console.log(data);
       setLoading(false);
 
       if (data.error) {
@@ -65,11 +65,11 @@ const CheckoutContent = (props: Props) => {
   return (
     <div className="z-30 opacity-100 relative text-white h-[85vh]">
       <div className="flex flex-col items-center">
-        <h1 className="mt-[9vh] font-extrabold text-6xl flex flex-row">
+        <h1 className="lg:mt-[9vh] md:mt-[20vh] mt-[20vh]  font-extrabold md:text-6xl text-3xl">
           Checkout
         </h1>
         <div
-          className={`mt-[8vh] rounded-lg bg-white box-border w-[40%] border-[1px] ${inter.className} border-solid border-black flex-col items-center justify-center rounded-xl`}
+          className={`mt-[8vh] rounded-lg bg-white box-border lg:w-[40%] md:w-[60%] w-[80%] border-[1px] ${inter.className} border-solid border-black flex-col items-center justify-center rounded-xl`}
         >
           <p className="text-black font-bold text-xl py-8 px-10 text-start flex flex-col">
             {business.searchResult}

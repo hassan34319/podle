@@ -11,7 +11,7 @@ function LoginContent({}: Props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   return (
-    <div className="md:col-span-6">
+    <div className="md:col-span-6 order-2 md:order-1">
         {/* Logo */}
       <div className="ml-14 mt-12">
         <Link href="/">
@@ -19,7 +19,7 @@ function LoginContent({}: Props) {
         </Link>
       </div>
       {/* Main Content */}
-      <div className="mt-[12vh] flex flex-col mx-[25%]">
+      <div className="md:mt-[12vh] flex flex-col lg:mx-[25%] w-[90%] mx-auto md:w-[80%] lg:w-[50%]">
         <h1 className="font-bold text-3xl text-start">Welcome Back To Podle</h1>
         <p className="font-medium my-[3vh]">
           Login to explore Podle’s network of verified podcasting services.
@@ -59,8 +59,8 @@ function LoginContent({}: Props) {
           </button>
         </div>
         {/* Link Signup */}
-        <div className={`  ${inter.className} mt-[2vh] text-start items-start`}>
-          <span className="font-medium text-start">
+        <div className={`  ${inter.className} mt-[2vh] md:text-start md:items-start items-center text-center`}>
+          <span className="font-medium md:text-start text-center">
             Don't have an account?{"   "}
           </span>
           <Link href="/signup" className="font-bold text-[#16A235] ml-1">

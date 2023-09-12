@@ -25,15 +25,15 @@ function ClaimBusinessManual({
       {!claimAuto && claimManual && (
         <>
           <div className="flex flex-col items-center">
-            <h1 className=" mt-[-5vh] font-extrabold text-5xl flex flex-row ">
-              Claim Your Business{" "}
-              <InformationCircleIcon
-                height={20}
-                width={20}
-                className="text-white mt-3 ml-2"
-              />{" "}
-            </h1>
-            <div className="h-[75vh] w-[85%] bg-[#E8DFCC] rounded-xl mt-[5vh] grid md:grid-cols-2 grid-cols-1">
+ <h1 className="lg:mt-[-5vh] md:mt-[5vh] mt-[4vh]  font-extrabold md:text-6xl text-3xl flex flex-row ">
+            Claim Your Business{" "}
+            <InformationCircleIcon
+              height={20}
+              width={20}
+              className="text-white mt-3 ml-2"
+            />{" "}
+          </h1>
+            <div className=" pb-4 md:h-[75vh] h-max lg:w-[85%] md:w-[90%] w-[95%] bg-[#E8DFCC] rounded-xl mt-[5vh] grid md:grid-cols-2 grid-cols-1 pt-10 md:pt-0">
               <BusinessImage />
               <BusinessForm />
             </div>

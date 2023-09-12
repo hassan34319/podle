@@ -129,17 +129,17 @@ function SearchBusiness({
       {!claimAuto && !claimManual && (
         <>
           <div className="flex flex-col items-center">
-            <h1 className="mt-[9vh] font-extrabold text-6xl">
+            <h1 className="lg:mt-[9vh] md:mt-[20vh] mt-[20vh]  font-extrabold md:text-6xl text-3xl">
               Service Provider
             </h1>
             <p
-              className={`mt-[9vh] font-bold ${inter.className}  xl:pr-[14%] text-2xl`}
+              className={`lg:mt-[9vh] md:mt-[5vh] mt-[2vh] md:font-bold ${inter.className} text-sm  xl:pr-[14%] md:text-2xl`}
             >
               Search for business by name
             </p>
             {/* Search Bar */}
             <div
-              className={`mt-[2vh] rounded-lg bg-white box-border w-[40%] h-[6vh] border-[1px] ${inter.className}border-solid border-black flex items-center justify-between`}
+              className={`mt-[2vh] rounded-lg bg-white box-border w-[80%] md:w-[60%] lg:w-[40%] h-[6vh] border-[1px] ${inter.className}border-solid border-black flex items-center justify-between`}
             >
               <input
                 type="text"
@@ -159,7 +159,7 @@ function SearchBusiness({
             {/* Display search results */}
             {searchResults.length > 0 && showNoResultsMessage ? (
               <div
-                className={`mt-[2vh] rounded-lg bg-white box-border w-[40%] h-max border-[1px] ${inter.className}border-solid border-black `}
+                className={`mt-[2vh] rounded-lg bg-white box-border md:w-[40%] w-[80%] h-max border-[1px] ${inter.className}border-solid border-black `}
               >
                 <p className="text-black text-opacity-60 font-normal text-sm ml-4 border-b-2 mr-4 py-2 border-gray-300">
                   {numberToWords(searchResults.length)} search result found
@@ -191,7 +191,7 @@ function SearchBusiness({
               </div>
             ) : null}
           </div>
-          <div className="absolute bottom-[5vh] right-[10vh]">
+          <div className="absolute md:bottom-[5vh] md:right-[10vh] bottom-2 right-[4vh]">
             <button
               className={`bg-[#1F1E21] border-[#969694] border-[1px] font-medium text-sm ${inter.className} text-white px-8 py-3 `}
               onClick={handleSkipClick}
@@ -199,7 +199,7 @@ function SearchBusiness({
               SKIP FOR NOW
             </button>
           </div>
-          <div className="absolute bottom-[5vh] left-[10vh]">
+          <div className="absolute md:bottom-[5vh] md:left-[10vh] bottom-[1vh] left-[4vh]">
             <button
               className={`font-medium text-sm ${inter.className} text-white   underline text-end `}
               onClick={() => router.push("/signup")}

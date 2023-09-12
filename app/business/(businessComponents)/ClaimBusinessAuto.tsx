@@ -22,7 +22,7 @@ function ClaimBusinessAuto({ claimAuto, setClaimAuto, claimManual,setClaimManual
     <>
       {claimAuto && !claimManual &&  (
         <div className="flex flex-col items-center">
-          <h1 className="mt-[9vh] font-extrabold text-6xl flex flex-row ">
+          <h1 className="lg:mt-[9vh] md:mt-[20vh] mt-[20vh]  font-extrabold md:text-6xl text-3xl flex flex-row ">
             Claim Your Business{" "}
             <InformationCircleIcon
               height={20}
@@ -31,21 +31,21 @@ function ClaimBusinessAuto({ claimAuto, setClaimAuto, claimManual,setClaimManual
             />{" "}
           </h1>
           <div
-            className={`mt-[8vh] rounded-lg bg-white box-border w-[40%] border-[1px] ${inter.className} border-solid border-black flex items-center justify-center rounded-xl `}
+            className={`mt-[8vh] rounded-lg bg-white box-border lg:w-[40%] md:w-[60%] w-[80%] border-[1px] ${inter.className} border-solid border-black flex items-center justify-center rounded-xl `}
           >
             <p className="text-black font-bold text-xl py-8 px-10 text-start">
               {business.searchResult}
             </p>
           </div>
-          <div className="w-[40%] flex justify-between mt-[5vh]">
+          <div className="md:w-[40%] md:w-[60%] w-[80%] flex justify-between mt-[5vh]">
             <button
-              className={`bg-[#1F1E21] border-[#969694] border-[1.5px] font-medium  ${inter.className} text-white w-[45%] py-4 `}
+              className={`bg-[#1F1E21] border-[#969694] border-[1.5px] font-medium md:text-base text-sm  ${inter.className} text-white w-[45%] py-4 `}
               onClick={handleSkipClick}
             >
               SKIP FOR NOW
             </button>
             <button
-              className={`bg-[#16A235] border-white  bg-opacity-80 border-[0.5px] font-medium  ${inter.className} text-white w-[45%] py-2 `}
+              className={`bg-[#16A235] border-white  bg-opacity-80 border-[0.5px] font-medium md:text-base text-sm   ${inter.className} text-white w-[45%] py-2 `}
               onClick={()=>router.push('/selectServices')}
             >
               CLAIM NOW

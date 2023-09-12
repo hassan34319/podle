@@ -20,15 +20,15 @@ function PasswordContent({}: Props) {
     }
 
   return (
-    <div className="md:col-span-6">
+    <div className="md:col-span-6 order-2 md:order-1">
       {/* Logo */}
-      <div className="ml-14 mt-12">
+      <div className="md:ml-14 md:mt-12">
         <Link href="/">
           <Logo />
         </Link>
       </div>
       {/* Main Content */}
-      <div className="mt-[20vh] flex flex-col mx-[25%]">
+      <div className="md:mt-[20vh] mt-[5vh] flex flex-col lg:mx-[25%] lg:w-[50%] mx-auto md:w-[80%] w-[90%]">
         <h1 className="font-bold text-3xl text-start">Forgot Password?</h1>
         <p className="font-medium my-[2vh]">
           No worries, we’ll send you reset instructions.

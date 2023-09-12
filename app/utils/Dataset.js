@@ -1,7 +1,7 @@
 export const ReviewerData = [
   {
     title: "John Doe",
-    image: "/reviewer1.png",
+    image: "/reviewer3.png",
     description:
       "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut al. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut al.",
     date: "11/07/2023"
@@ -22,7 +22,7 @@ export const ReviewerData = [
   },
   {
     title: "Emily Williams",
-    image: "/reviewer4.png",
+    image: "/reviewer2.png",
     description:
       "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut al. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut al.",
     date: "14/07/2023"
@@ -32,7 +32,7 @@ export const SampleServices = [
   {
     Title: "Content Editing",
     Category: "Writing & Creating",
-    Image: "/sample1.png",
+    Image: "/service3.jpg",
     Rating: 4,
     Price: "$100"
   },
@@ -46,14 +46,14 @@ export const SampleServices = [
   {
     Title: "Web Development",
     Category: "Technology & Programming",
-    Image: "/sample3.png",
+    Image: "/card7.png",
     Rating: 3,
     Price: "$200"
   },
   {
     Title: "Photography Basics",
     Category: "Photography",
-    Image: "/sample4.png",
+    Image: "/service4.jpg",
     Rating: 2,
     Price: "$80"
   }
@@ -69,7 +69,7 @@ export const Categorydataset = [
     {
       rating: 4.5,
       title: "Podcast Creators",
-      backgroundImage: "/service2.jpg",
+      backgroundImage: "/group.jpg",
       category: "Podcast Production Companies",
     },
     {
@@ -107,7 +107,7 @@ export const Categorydataset = [
     {
       rating: 4.6,
       title: "SoundScapes Studio",
-      backgroundImage: "/service2.jpg",
+      backgroundImage: "/group.jpg",
       category: "Podcast Studios",
     },
     {
@@ -145,7 +145,7 @@ export const Categorydataset = [
     {
       rating: 4.3,
       title: "Podcast Mentorship",
-      backgroundImage: "/service2.jpg",
+      backgroundImage: "/group.jpg",
       category: "Podcast Creation & Coaching",
     },
     {
@@ -165,7 +165,7 @@ export const Categorydataset = [
     {
       rating: 4.6,
       title: "Host Your Podcast",
-      backgroundImage: "/service2.jpg",
+      backgroundImage: "/group.jpg",
       category: "Podcast Hosting",
     },
     {
@@ -191,7 +191,7 @@ export const Categorydataset = [
     {
       rating: 4.8,
       title: "Promo Wave",
-      backgroundImage: "/service2.jpg",
+      backgroundImage: "/group.jpg",
       category: "Promotional Services",
     },
     {

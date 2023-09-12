@@ -13,11 +13,11 @@ function ServiceCard({rating,backgroundImage,title, Category}: Props) {
   const backgroundImageUrl = backgroundImage;
   return (
     <div
-      className="bg-cover col-span-1 h-[40vh]"
+      className="bg-cover col-span-1 md:h-[40vh] h-[50vh]"
       style={{ backgroundImage: `url(${backgroundImageUrl})` }}
     >
       <div
-        className={`bg-black relative bg-opacity-[77%] h-[14vh] w-full bg-bottom mt-[26vh] flex flex-col ${inter.className} px-4 py-2 justify-between `}
+        className={`bg-black relative bg-opacity-[77%] md:h-[14vh] h-[20vh] w-full bg-bottom md:mt-[26vh] mt-[30vh] flex flex-col ${inter.className} px-4 py-2 justify-between `}
       >
         <p className="text-xl font-medium text-[#16A235] mb-1">{title}</p>
         <p className="text-white font-medium">Category: {Category}</p>

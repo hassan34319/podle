@@ -17,7 +17,7 @@ function ServicesMain({}: Props) {
   return (
     <section className="h-full bg-[#EEE8DA] w-full mt-[5vh] pb-[5vh] ">
       {/* Grid for the services cards */}
-      <div className="grid grid-cols-3 gap-x-10 gap-y-10 pt-10 mx-10">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-10 gap-y-10 pt-10 mx-10">
         {dataset.map((item, index) => (
           <ServiceCard
             key={index}

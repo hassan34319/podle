@@ -10,9 +10,9 @@ type Props = {};
 function ServiceSearch({}: Props) {
   const [search, setSearch] = useState("");
   return (
-    <div className="mt-[8vh] flex flex-row items-center justify-between px-10">
+    <div className="lg:mt-[8vh] mt-[4vh] flex flex-row flex-wrap items-center justify-between lg:px-10 px-4">
       {/* Search Input Keywords */}
-      <div className="bg-white h-[7vh] w-[40%] border-black border-[0.5px] border-opacity-50 flex items-center justify-between px-2 rounded-lg">
+      <div className="bg-white h-[7vh] md:w-[40%] w-[100%] text-xs md:text-base  border-black border-[0.5px] border-opacity-50 flex items-center justify-between px-2 rounded-lg">
         <input
           className={`${inter.className} font-normal px-3 text-black focus:outline-none w-full`}
           placeholder="Enter Keywords"
@@ -28,7 +28,7 @@ function ServiceSearch({}: Props) {
         />
         {/* Categories Search */}
       </div>
-      <div className="bg-white h-[7vh] w-[19%] border-black border-[0.5px] border-opacity-50 flex items-center  justify-between px-2 rounded-lg">
+      <div className="bg-white mt-4 md:mt-0 h-[7vh] text-xs md:text-base md:w-[19%] w-[48%] border-black border-[0.5px] border-opacity-50 flex items-center  justify-between px-2 rounded-lg">
         <input
           className={`${inter.className} font-normal px-3 text-black focus:outline-none w-full`}
           placeholder="Search Category"
@@ -44,7 +44,7 @@ function ServiceSearch({}: Props) {
         />
       </div>
       {/* Location Search */}
-      <div className="bg-white h-[7vh] w-[19%] border-black border-[0.5px] border-opacity-50 flex items-center  justify-between px-2 rounded-lg">
+      <div className="bg-white h-[7vh] md:w-[19%] mt-4 md:mt-0 w-[48%] border-black border-[0.5px] border-opacity-50 flex items-center text-xs md:text-base  justify-between px-2 rounded-lg">
         <input
           className={`${inter.className} font-normal px-3 text-black focus:outline-none w-full`}
           placeholder="Search Location"
@@ -60,7 +60,7 @@ function ServiceSearch({}: Props) {
         />
       </div>
       <button
-        className={`bg-[#1F1E21] border-white h-[7vh] border-[1px] w-[13%] font-medium text-sm ${inter.className} text-white px-8 py-3 rounded-lg  text-center `}
+        className={`bg-[#1F1E21] border-white h-[7vh] mt-4 md:mt-0 border-[1px] md:w-[13%] w-[100%] font-medium text-sm ${inter.className} text-white px-8 py-3 rounded-lg  text-center `}
         // onClick={handleSkipClick}
       >
         Search

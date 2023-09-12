@@ -11,7 +11,7 @@ function BusinessContent({}: Props) {
   const [claimAuto, setClaimAuto] = useState(false);
   const [claimManual, setClaimManual] = useState(false);
   return (
-    <section className="z-30 opacity-100 relative text-white h-[85vh]">
+    <section className="z-30 opacity-100 relative text-white min-h-[85vh]">
       <SearchBusiness
         claimAuto={claimAuto}
         setClaimAuto={setClaimAuto}

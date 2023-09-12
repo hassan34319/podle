@@ -23,6 +23,7 @@ function UserSamples({}: Props) {
         {SampleServices.map((item, index) => (
           <SampleCard
             key={index}
+            index={index}
             title={item.Title}
             category={item.Category}
             image={item.Image}

@@ -31,19 +31,19 @@ type Props = {};
 function SelectServicesContent({}: Props) {
   const router = useRouter()
   return (
-    <div className="z-30 opacity-100 relative text-white h-[85vh]">
+    <div className="z-30 opacity-100 relative text-white md:h-[85vh] h-max">
       <div className="flex flex-col items-center">
-        <h1 className=" mt-[-4vh] font-extrabold text-4xl flex flex-row ">
+        <h1 className="ml-[5%] md:w-full md:ml-0 md:px-0 lg:mt-[-4vh] font-extrabold md:text-4xl text-2xl mt-[4vh] flex flex-row md:justify-center md:mt-[5vh]  ">
           Select Services Your Company Offers
         </h1>
         {/* Services */}
-        <div className="h-[70vh] w-[85%] bg-[#E8DFCC] rounded-xl mt-[5vh] grid md:grid-cols-3 grid-cols-2 pl-20 py-5 ">
+        <div className="md:h-[70vh] h-max lg:w-[85%] md:w-[90%] w-[95%] bg-[#E8DFCC] rounded-xl mt-[5vh] grid md:grid-cols-3 grid-cols-1 lg:pl-20 pl-4 py-5 ">
           {dummy_dataset.map((data) => {
             return <ServiceSelectButton text={data} />;
           })}
         </div>
       </div>
-      <div className="flex flex-row justify-between w-[85%] items-center ml-[7%] mt-[2vh]">
+      <div className="flex flex-row justify-between md:w-[85%] w-[95%] items-center md:ml-[7%] mt-[2vh] mx-auto md:mx-0 pb-4">
         <button
           className={`font-medium text-sm ${inter.className}  text-white underline  `}
           // onClick={handleBackClick}
