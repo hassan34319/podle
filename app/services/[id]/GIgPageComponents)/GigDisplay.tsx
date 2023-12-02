@@ -6,6 +6,7 @@ import { renderRatingStars, renderRatingStarsLarge } from "@/app/utils/stars";
 import { useSession } from "next-auth/react";
 import { Basic } from "next/font/google";
 import Image from "next/image";
+import {  useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import Stripe from "stripe";
@@ -31,8 +32,11 @@ function GigDisplay({ gig }: Props) {
     document.body.style.overflow = ""; // Allow scrolling on the background
   };
 
+  const router = useRouter();
+
   const handleSend = async () => {
     if (!message || !gig || !gig.sellerEmail) {
+      router.push("/login")
       return;
     }
 
@@ -93,6 +97,7 @@ function GigDisplay({ gig }: Props) {
   };
   const handleSubmit = async () => {
     if (!session.data) {
+      router.push('/login')
       return;
     }
     try {
