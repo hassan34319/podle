@@ -31,9 +31,9 @@ const updateTransactionStatus = async () => {
   export async function GET(req: Request) {
     try {
         const response = await updateTransactionStatus()
-        NextResponse.json("Success")
+        return NextResponse.json("Success")
     } catch (error) {
-        NextResponse.json("Error")
+        return NextResponse.json("Error")
       }
     }
 
