@@ -1,14 +1,15 @@
+"use client"
 import LeaveReviewMain from "@/app/(UIComponents)/LeaveReviewMain";
 import LoggedNavbar from "@/app/(UIComponents)/LoggedNavbar";
 import Accept from "@/app/serviceProvider/order/(OrderComponents)/Accept";
 import React, { useState } from "react";
 
 interface Order {
-  buyerEmail: string;
   _id: string;
+  buyerEmail: string;
   _createdAt: string;
   sellerEmail: string;
-  price: string;
+  price: number;
   estimatedDelivery: string;
   status: string;
   gigID: string;
