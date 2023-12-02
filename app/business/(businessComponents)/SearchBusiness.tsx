@@ -5,28 +5,24 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { numberToWords } from "../../utils/numToWords.js";
 import { useRouter } from "next/navigation";
 import { useStateContext } from "@/app/context/stateContext";
+import { client } from "@/sanity/lib/client";
+
+
 type Props = {
   claimAuto: boolean;
   setClaimAuto: (value: boolean) => void;
   claimManual: boolean;
   setClaimManual: (value: boolean) => void;
+  autoBusiness : BusinessInfo[];
 };
-interface BusinessInfo {
-  title: string;
-  businessName: string;
-  streetAddress: string;
-  city: string;
-  state: string;
-  zipCode: string;
-  phoneNumber?: string; // Optional field for phone number
-  searchResult: string; // Field to store the search result
-}
+
 
 function SearchBusiness({
   claimAuto,
   setClaimAuto,
   claimManual,
   setClaimManual,
+  autoBusiness
 }: Props) {
   const router = useRouter();
   //   The actual input inputted by the users
@@ -39,56 +35,14 @@ function SearchBusiness({
   // The selected business by user from context
   const { addBusiness, business } = useStateContext();
 
-  const dummyData: BusinessInfo[] = [
-    {
-      title: "Jam Street Media",
-      businessName: "Jam Street Media",
-      streetAddress: "123 ABC St",
-      city: "Los Angeles",
-      state: "CA",
-      zipCode: "73738",
-      phoneNumber: "123-456-7890",
-      searchResult: "", // Leave this empty for now
-    },
-    {
-      title: "Pizza Hut",
-      businessName: "Pizza Hut",
-      streetAddress: "New York City, Street 4",
-      city: "New York City",
-      state: "NY",
-      zipCode: "10001",
-      phoneNumber: "987-654-3210",
-      searchResult: "", // Leave this empty for now
-    },
-    {
-      title: "Pizza Max",
-      businessName: "Pizza Max",
-      streetAddress: "London, Street 4",
-      city: "London",
-      state: "LDN",
-      zipCode: "W1",
-      phoneNumber: "555-123-4567",
-      searchResult: "", // Leave this empty for now
-    },
-    {
-      title: "McDonald's",
-      businessName: "McDonald's",
-      streetAddress: "Los Angeles, Avenue 5",
-      city: "Los Angeles",
-      state: "CA",
-      zipCode: "90210",
-      phoneNumber: "111-222-3333",
-      searchResult: "", // Leave this empty for now
-    },
-  ];
 
   // Calculate the search result for each entry
-  dummyData.forEach((entry) => {
-    const { businessName, streetAddress, city, state, zipCode } = entry;
-    entry.searchResult = `${businessName}, ${streetAddress}, ${city}, ${state} ${zipCode}`;
+  autoBusiness.forEach((entry) => {
+    const { name, streetAddress, city, state, zipCode } = entry;
+    entry.searchResult = `${name}, ${streetAddress}, ${city}, ${state} ${zipCode}`;
   });
 
-  console.log(dummyData);
+  console.log(autoBusiness), "From Search";
 
   //  Handles the change in user input
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -97,17 +51,27 @@ function SearchBusiness({
   };
   // Handles when user presses search Icon
   const handleSearchSubmit = () => {
-    const filteredResults = dummyData.filter((address) =>
-      address.searchResult.toLowerCase().includes(searchInput.toLowerCase())
+    const filteredResults = autoBusiness.filter((address) =>
+      address.searchResult?.toLowerCase().includes(searchInput.toLowerCase())
     );
 
     setSearchResults(filteredResults);
     setShowNoResultsMessage(true); // Show the "No results found" message when the search button is clicked
   };
   //   Handles when user Selects a business
-  const handleSelectBusiness = (address: BusinessInfo) => {
+  const handleSelectBusiness = (selectedBusiness : BusinessInfo) => {
     // Adds Business to context
-    addBusiness(address);
+    addBusiness( {
+      name: selectedBusiness.name,
+      streetAddress: selectedBusiness.streetAddress,
+      city: selectedBusiness.city,
+      state: selectedBusiness.state,
+      zipCode: selectedBusiness.zipCode,
+      phoneNumber: selectedBusiness.phoneNumber,
+      logo: selectedBusiness.logo,
+      searchResult : selectedBusiness.searchResult
+    }
+    );
     // Changes Component to claim component
     setClaimAuto(true);
     console.log("business", business);
@@ -169,7 +133,7 @@ function SearchBusiness({
                     <button
                       className="w-full text-start block ml-4 text-black font-normal py-3"
                       onClick={() => handleSelectBusiness(address)}
-                      key={address.title}
+                      key={address.name}
                     >
                       {address.searchResult}
                     </button>

@@ -19,7 +19,7 @@ function ResetEmailContent({}: Props) {
         <Link href="/">
           <Logo />
         </Link>
-        <div className="flex items-start pt-[3vh] justify-center z-30 w-full h-full">
+        <div className="flex items-start pt-[3vh] justify-center z-30 w-full h-full md:hidden">
         <MobileLogo />
       </div>
       </div>

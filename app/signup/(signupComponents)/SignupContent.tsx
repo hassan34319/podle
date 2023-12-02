@@ -23,6 +23,7 @@ function SignupContent({}: Props) {
         {/* Button 1 */}
         <div className={` ${inter.className} mt-[7vh]`}>
           <button
+            onClick={() => router.push("/contentCreatorSignUp")}
             className={`bg-[#16A235] text-white font-medium   py-4 w-full md:px-20 px-12 bg-opacity-[83%]`}
           >
             Sign up as a Content creator

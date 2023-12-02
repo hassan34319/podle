@@ -17,7 +17,7 @@ type Props = {
 
 function LandingHero({homeImage}: Props) {
   return (
-    <section className='grid grid-cols-1 md:grid-cols-2 min-h-[100vh] md:min-h-[50vh] lg:min-h-[100vh] pb-20'>
+    <section className='grid grid-cols-1 lg:grid-cols-2 min-h-[100vh] lg:h-max lg:min-h-[50vh]  pb-20'>
         <PodcastImage homeImage={homeImage}/>
         <Content/>
     </section>

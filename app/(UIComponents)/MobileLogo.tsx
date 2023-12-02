@@ -1,4 +1,5 @@
 "use client"
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -11,7 +12,7 @@ function MobileLogo({}: Props) {
       width="125"
       height="40"
       viewBox="0 0 157 48"
-      className="md:hidden z-30"
+      className="lg:hidden z-30"
       onClick={()=>router.push('/')}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

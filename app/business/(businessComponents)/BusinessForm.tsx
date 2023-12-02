@@ -4,18 +4,12 @@ import { useRouter } from "next/navigation";
 import Router from "next/router";
 import { useState } from "react"; // Don't forget to import useState
 
-type Props = {};
-interface BusinessInfo {
-  title: string;
-  businessName: string;
-  streetAddress: string;
-  city: string;
-  state: string;
-  zipCode: string;
-  phoneNumber?: string; // Optional field for phone number
-  searchResult?: string; // Field to store the search result
-}
-function BusinessForm({}: Props) {
+type Props = {
+  sanityImage: string;
+};
+
+function BusinessForm({ sanityImage }: Props) {
+  console.log(sanityImage);
   // State and setters
   const [businessName, setBusinessName] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
@@ -25,21 +19,49 @@ function BusinessForm({}: Props) {
   const [zipCode, setZipCode] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
-    const {addBusiness} = useStateContext()
-    const router = useRouter()
+  const [error, setError] = useState("");
+  const { addBusiness } = useStateContext();
+  const [loading, setLoading] = useState(false)
+  const router = useRouter();
   const handleSubmitForm = () => {
-    const BusinessInformation: BusinessInfo = {
-      title: businessName,
-      businessName : businessName,
-      streetAddress: streetAddress,
-      city: city,
-      state: state,
-      zipCode: zipCode,
-      phoneNumber: phoneNumber // Optional field for phone number
-    };
+    const requiredFields = [
+      businessName,
+      streetAddress,
+      city,
+      state,
+      zipCode,
+      phoneNumber,
+      sanityImage,
+    ];
+    const areFieldsPresent = requiredFields.every(
+      (field) => field && field.trim() !== ""
+    );
 
-    addBusiness(BusinessInformation)
-    router.push('/selectServices')
+    if (areFieldsPresent) {
+      setLoading(true)
+      setError("")
+      const BusinessInformation: BusinessInfo = {
+        name: businessName,
+        streetAddress: streetAddress,
+        city: city,
+        state: state,
+        zipCode: zipCode,
+        phoneNumber: phoneNumber,
+        logo: {
+          _type: "image",
+          asset: {
+            _ref: sanityImage,
+          },
+        },
+        searchResult: "Manual",
+      };
+
+      addBusiness(BusinessInformation);
+      router.push("/selectServices");
+      setLoading(false)
+    } else {
+      setError("Feilds are missing");
+    }
   };
 
   return (
@@ -122,25 +144,14 @@ function BusinessForm({}: Props) {
       </div>
 
       {/* Password */}
-      <div
-        className={`bg-white ${inter.className} h-[6vh] lg:w-[70%] md:w-[80%] w-[90%] border-black border-[0.5px] border-opacity-50 flex items-center mb-5`}
-      >
-        <input
-          type="password"
-          placeholder="Password *"
-          className={`focus:outline-none font-normal px-3 text-black border-transparent  overflow-hidden whitespace-nowrap`}
-          value={password}
-          required
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
 
       {/* Next Button */}
+      {error && <p className="text-red-600">Some feilds are missing</p>}
       <button
         className={`bg-[#16A235] border-white  bg-opacity-100 border-[0.5px] font-medium  ${inter.className} text-white w-[70%] h-[6vh] py-2 flex items-center justify-center bg-opacity-80 `}
         onClick={handleSubmitForm}
       >
-        NEXT
+        {loading ? "Loading" : "NEXT"}
       </button>
     </div>
   );

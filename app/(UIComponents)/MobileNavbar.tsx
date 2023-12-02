@@ -1,11 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import {  X } from "react-feather"; // Import the Menu icon
+import { X } from "react-feather"; // Import the Menu icon
+import { signOut, useSession } from "next-auth/react";
 
 type Props = {};
 
 function MobileNavbar({}: Props) {
+  const session = useSession()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -16,7 +18,10 @@ function MobileNavbar({}: Props) {
   };
   return (
     <section className="flex items-center w-1/4">
-      <button className="lg:hidden text-white ml-[20%]" onClick={toggleMobileMenu}>
+      <button
+        className="lg:hidden text-white ml-[20%]"
+        onClick={toggleMobileMenu}
+      >
         <svg
           width="20"
           height="20"
@@ -56,13 +61,41 @@ function MobileNavbar({}: Props) {
             <Link className="text-white my-2" href="/services">
               Podcast Services
             </Link>
-            <Link className="text-white my-2" href="https://medium.com/@mattystaudt">
+            <Link
+              className="text-white my-2"
+              href="https://medium.com/@mattystaudt"
+            >
               Blog
             </Link>
-            <Link className="text-white my-2" href="/login">
-              Login
-            </Link>
-            <Link className="text-white my-2" href="https://discord.gg/JNvtFq3p">
+            {!session.data && (
+              <Link className="text-white my-2" href="/login">
+                Login
+              </Link>
+            )}
+            {session.data && (
+              <Link onClick={()=>signOut()} className="text-white my-2" href="/">
+                Log out
+              </Link>
+            )}
+            {session.data && (
+              <Link  className="text-white my-2" href="/messages">
+                Messages
+              </Link>
+            )}
+            {session.data && (
+              <Link className="text-white my-2"  href={`/${session.data?.user?.name}/dashboard`}>
+                Dashboard
+              </Link>
+            )}
+            {session.data && (
+              <Link className="text-white my-2"  href={`/${session.data?.user?.name}/order`}>
+                Orders
+              </Link>
+            )}
+            <Link
+              className="text-white my-2"
+              href="https://discord.gg/JNvtFq3p"
+            >
               Discord
             </Link>
           </div>

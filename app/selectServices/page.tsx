@@ -2,17 +2,39 @@ import Link from "next/link";
 import React from "react";
 import Logo from "../(UIComponents)/Logo";
 import MobileLogo from "../(UIComponents)/MobileLogo";
+import { client } from "../utils/client";
+import { getSessionServer } from "../utils/getCurrentUser";
 import { inter } from "../utils/inter";
 import SelectServicesContent from "./(SelectServicesComponents)/SelectServicesContent";
 
 type Props = {};
 
-function SelectServicesPage({}: Props) {
+async function SelectServicesPage({}: Props) {
   const backgroundImageUrl = "/bg_business.jpg"; // Replace 'jpg' with the actual file extension of your image.
+  const session = await  getSessionServer()
+  const searchEmail = session?.user?.email; // Replace with the email you want to search
 
+  // Fetch the document based on the email field
+  const user  = await client
+    .fetch('*[_type == "claimedBusiness" && email == $email][0]', {
+      email: searchEmail,
+    })
+    .then((document) => {
+      if (document) {
+        console.log("Document found:", document);
+        return document;
+      } else {
+        console.log("Document not found");
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching document:", error);
+    });
+
+    console.log("From select services", user)
   return (
     <main
-      className="bg-cover bg-top min-h-[100vh] "
+      className="bg-cover bg-top min-h-[100vh] h-max "
       style={{ backgroundImage: `url(${backgroundImageUrl})` }}
     >
       {/* Overlay Black */}
@@ -27,7 +49,7 @@ function SelectServicesPage({}: Props) {
         </div>
       </div>
       {/* Main content based on conditions */}
-      <SelectServicesContent />
+      <SelectServicesContent  user={user} />
     </main>
   );
 }

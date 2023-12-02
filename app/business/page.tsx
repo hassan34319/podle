@@ -2,14 +2,27 @@ import Link from "next/link";
 import React from "react";
 import Logo from "../(UIComponents)/Logo";
 import MobileLogo from "../(UIComponents)/MobileLogo";
+import { client } from "../utils/client";
 import { inter } from "../utils/inter";
 import BusinessContent from "./(businessComponents)/BusinessContent";
 
 type Props = {};
-
-function BusinessPage({}: Props) {
+export const revalidate = 60;
+async function BusinessPage({}: Props) {
   const backgroundImageUrl = "/bg_business.jpg"; // Replace 'jpg' with the actual file extension of your image.
 
+  const query = `*[_type == 'autoBusiness']`;
+
+  // Fetch the documents
+  const autoBusinesses = await client.fetch(query);
+
+  const createImage = await client.fetch(`
+  *[_type == "createImage"] {
+    ...
+  }
+`);
+
+    console.log(autoBusinesses)
   return (
     <main
       className="bg-cover bg-top min-h-[100vh] "
@@ -18,16 +31,9 @@ function BusinessPage({}: Props) {
       {/* Overlay Black */}
       <div className="absolute inset-0 bg-black bg-opacity-60" />
       {/* Logo */}
-      <div className="md:pl-14 pt-4 md:pt-8 z-30 opacity-100 relative">
-        <Link href="/" className="hidden md:block">
-          <Logo />
-        </Link>
-        <div className="md:hidden flex items-start pt-[3vh] justify-center z-30 w-full">
-          <MobileLogo />
-        </div>
-      </div>
+
       {/* Main content based on conditions */}
-      <BusinessContent />
+      <BusinessContent autoBusiness={autoBusinesses} createImage={createImage} />
     </main>
   );
 }

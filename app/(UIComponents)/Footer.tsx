@@ -18,13 +18,13 @@ function Footer({}: Props) {
           <Link href="/about" className="font-bold">
             CONTACT US
           </Link>
-          <Link href="/about" className="font-bold">
+          <Link href="/faq" className="font-bold">
             FAQ
           </Link>
-          <Link href="/about" className="font-bold">
+          <Link href="/privacyPolicy" className="font-bold">
             PRIVACY POLICY
           </Link>
-          <Link href="/about" className="font-bold">
+          <Link href="/terms" className="font-bold">
             PODLE TERMS OF SERVICE
           </Link>
         </div>

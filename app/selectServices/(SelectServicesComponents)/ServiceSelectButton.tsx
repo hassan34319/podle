@@ -4,11 +4,13 @@ import React, { useState } from "react";
 
 type Props = {
   text: string;
+  toggleServiceSelection: (service: string) => void;
 };
 
-function ServiceSelectButton({ text }: Props) {
+function ServiceSelectButton({ text, toggleServiceSelection }: Props) {
   const [selected, setSelected] = useState(false);
   const handleDivClick = () => {
+    toggleServiceSelection(text);
     setSelected(!selected);
   };
 

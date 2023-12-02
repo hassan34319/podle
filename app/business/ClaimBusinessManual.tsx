@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import BusinessImage from "./(businessComponents)/BusinessImage";
 import BusinessForm from "./(businessComponents)/BusinessForm";
@@ -20,6 +20,7 @@ function ClaimBusinessManual({
   const handleBackClick = () => {
     setClaimManual(false);
   };
+  const [sanityImage,setSanityImage] = useState("")
   return (
     <>
       {!claimAuto && claimManual && (
@@ -34,8 +35,8 @@ function ClaimBusinessManual({
             />{" "}
           </h1>
             <div className=" pb-4 md:h-[75vh] h-max lg:w-[85%] md:w-[90%] w-[95%] bg-[#E8DFCC] rounded-xl mt-[5vh] grid md:grid-cols-2 grid-cols-1 pt-10 md:pt-0">
-              <BusinessImage />
-              <BusinessForm />
+              <BusinessImage setSanityImage={setSanityImage} />
+              <BusinessForm  sanityImage={sanityImage}/>
             </div>
           </div>
           <button

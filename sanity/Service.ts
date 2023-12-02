@@ -1,6 +1,6 @@
 export default {
     name: 'podcastService',
-    title: 'Podcast Service',
+    title: 'Categories',
     type: 'document',
     fields: [
       {

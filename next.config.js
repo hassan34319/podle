@@ -3,7 +3,8 @@ const nextConfig = {
   images: {
     domains: [
       "cdn.sanity.io",
-      "www.pexels.com"
+      "www.pexels.com",
+      "thinksport.com.au"
     ],
   },
 };

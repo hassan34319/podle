@@ -18,7 +18,7 @@ type Props = {
 function LoginImage({ LoginImage }: Props) {
   return (
     <section className="relative md:col-span-4 md:h-[100vh] h-[50vh] flex items-end justify-end top-0 right-0 order-1 md:order-2">
-      <div className="flex items-start pt-[3vh] justify-center z-30 w-full h-full">
+      <div className="flex items-start pt-[3vh] justify-center z-30 w-full h-full md:hidden">
         <MobileLogo />
       </div>
       <Image
