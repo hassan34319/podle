@@ -12,9 +12,9 @@ import { NextResponse } from "next/server";
 import Pusher from "pusher";
 
 const pusher = new Pusher({
-  appId: "1716632",
-  key: "b1a1683f5717cd28b393",
-  secret: "720553e7e8b7263abb2f",
+  appId: process.env.NEXT_PUBLIC_PUSHER_APP_ID!,
+  key: process.env.NEXT_PUBLIC_PUSHER_APP_KEY!,
+  secret: process.env.NEXT_PUBLIC_PUSHER_APP_SECRET!,
   cluster: "mt1",
   useTLS: true
 });

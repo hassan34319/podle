@@ -32,7 +32,7 @@ function CurrentConvo({ conversation }: Props) {
 
 
   useEffect(() => {
-    const pusher = new Pusher('b1a1683f5717cd28b393', {
+    const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_APP_KEY!, {
       cluster: 'mt1'
     });
 
