@@ -39,11 +39,6 @@ const satoshi = localFont({
 export const metadata: Metadata = {
   title: "Podle",
   description: "Changing the podcast landscape",
-  icons: {
-
-    icon: "/logo.svg",
-    
-    },
 };
 
 export default async function RootLayout({
