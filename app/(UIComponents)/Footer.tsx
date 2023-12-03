@@ -12,8 +12,8 @@ function Footer({}: Props) {
       <div className="flex flex-row justify-between items-start pb-[10vh]">
         {/* Footer Navbar */}
         <div className="flex-col flex space-y-5 justify-start text-xs md:text-base">
-          <Link href="/about" className="font-bold">
-            ABOUT
+          <Link href="/services" className="font-bold">
+            Services
           </Link>
           <Link href="/about" className="font-bold">
             CONTACT US

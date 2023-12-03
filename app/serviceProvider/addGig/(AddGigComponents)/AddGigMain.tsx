@@ -86,9 +86,6 @@ function AddGigMain({categories}: Props) {
       !premiumDesc ||
       !servicesName.service1 ||
       !servicesName.service2 ||
-      !servicesName.service3 ||
-      !servicesName.service4 ||
-      !servicesName.service5 
     ) {
       // Check if all required fields are filled
       console.log("Feilds are empty")

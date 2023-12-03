@@ -51,7 +51,7 @@ function Navbar({}: Props) {
         onClick={()=>signOut()}
         className="cursor-pointer relative bg-black  overflow-hidden flex flex-row md:py-2 md:px-4 px-2 py-1 rounded-sm md:rounded-none box-border items-center justify-center text-left  text-white font-inter "
       >
-        <b className="relative text-xs">Sign Out</b>
+        <b className="relative text-xs">Log Out</b>
       </button>
 }
     </div>

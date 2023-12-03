@@ -61,22 +61,7 @@ function MobileNavbar({}: Props) {
             <Link className="text-white my-2" href="/services">
               Podcast Services
             </Link>
-            <Link
-              className="text-white my-2"
-              href="https://medium.com/@mattystaudt"
-            >
-              Blog
-            </Link>
-            {!session.data && (
-              <Link className="text-white my-2" href="/login">
-                Login
-              </Link>
-            )}
-            {session.data && (
-              <Link onClick={()=>signOut()} className="text-white my-2" href="/">
-                Log out
-              </Link>
-            )}
+
             {session.data && (
               <Link  className="text-white my-2" href="/messages">
                 Messages
@@ -88,16 +73,25 @@ function MobileNavbar({}: Props) {
               </Link>
             )}
             {session.data && (
+              <Link className="text-white my-2"  href={`/transaction`}>
+                Transactions
+              </Link>
+            )}
+            {session.data && (
               <Link className="text-white my-2"  href={`/${session.data?.user?.name}/order`}>
                 Orders
               </Link>
             )}
-            <Link
-              className="text-white my-2"
-              href="https://discord.gg/JNvtFq3p"
-            >
-              Discord
-            </Link>
+           {!session.data && (
+              <Link className="text-white my-2" href="/login">
+                Login
+              </Link>
+            )}
+            {session.data && (
+              <Link onClick={()=>signOut()} className="text-white my-2" href="/">
+                Log out
+              </Link>
+            )}
           </div>
         </div>
       )}

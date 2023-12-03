@@ -115,14 +115,7 @@ function SecondaryNavbar({}: Props) {
             Login
           </Link>
         )}
-        <Link
-          href="https://medium.com/@mattystaudt"
-          className={`font-medium cursor-pointer ${
-            pathname === "/Blog" ? "text-[#16A235]" : ""
-          }`}
-        >
-          Blogs
-        </Link>
+       
         <Link
           href="/services"
           className={`font-medium cursor-pointer ${
@@ -130,14 +123,6 @@ function SecondaryNavbar({}: Props) {
           }`}
         >
           Services
-        </Link>
-        <Link
-          href="https://discord.gg/JNvtFq3p"
-          className={`font-medium cursor-pointer ${
-            pathname === "/Discord" ? "text-[#16A235]" : ""
-          }`}
-        >
-          Discord
         </Link>
         {session.data && (
           <Link
