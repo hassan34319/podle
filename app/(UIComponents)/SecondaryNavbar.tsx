@@ -130,7 +130,7 @@ function SecondaryNavbar({}: Props) {
             href="/"
             className={`font-medium cursor-pointer `}
           >
-            Log out
+            Sign out
           </Link>
         )}
       </div>

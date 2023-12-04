@@ -89,7 +89,7 @@ function MobileNavbar({}: Props) {
             )}
             {session.data && (
               <Link onClick={()=>signOut()} className="text-white my-2" href="/">
-                Log out
+                Sign out
               </Link>
             )}
           </div>
