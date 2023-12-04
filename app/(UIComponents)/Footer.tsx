@@ -13,7 +13,7 @@ function Footer({}: Props) {
         {/* Footer Navbar */}
         <div className="flex-col flex space-y-5 justify-start text-xs md:text-base">
           <Link href="/services" className="font-bold">
-            Services
+            SERVICES
           </Link>
           <Link href="/faq" className="font-bold">
             FAQ

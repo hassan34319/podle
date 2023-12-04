@@ -43,7 +43,7 @@ function ServicesMain({Gigs}: Props) {
           />
         ))}
       </div>
-      <div className="mt-[8vh] flex items-center justify-center space-x-4">
+      <div className="mt-[20vh] flex items-center justify-center space-x-4">
         <ChevronLeftIcon height={20} width={20} className="text-[#16A235]"/>
         <PageCircle num={1}/>
         <PageCircle num={2}/>
