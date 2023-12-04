@@ -15,9 +15,6 @@ function Footer({}: Props) {
           <Link href="/services" className="font-bold">
             Services
           </Link>
-          <Link href="/about" className="font-bold">
-            CONTACT US
-          </Link>
           <Link href="/faq" className="font-bold">
             FAQ
           </Link>

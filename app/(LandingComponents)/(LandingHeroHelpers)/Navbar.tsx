@@ -15,12 +15,6 @@ function Navbar({}: Props) {
         <Link href="/services" className="font-medium cursor-pointer">
           Podcast Services
         </Link>
-        <Link
-          href="https://medium.com/@mattystaudt"
-          className="font-medium cursor-pointer"
-        >
-          Blog
-        </Link>
         {!session.data && (
           <Link href="/login" className="font-medium cursor-pointer">
             Log In
@@ -31,12 +25,6 @@ function Navbar({}: Props) {
             Dashboard
           </Link>
         )}
-        <Link
-          href="https://discord.gg/JNvtFq3p"
-          className="font-medium cursor-pointer"
-        >
-          Discord
-        </Link>
       </div>
       {!session.data && 
       <Link
