@@ -46,7 +46,7 @@ function ServiceSearch({ categories,Gigs }: Props) {
           placeholder="Enter Keywords"
           required
           value={searchTitle}
-          onChange={(e) => setSearchTitle(e.target.value)}
+          onChange={handleSearchTitleChange}
         />
         {/* Suggestions */}
         {suggestedTitles.length > 0 && (
