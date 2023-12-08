@@ -42,6 +42,7 @@ function CurrentConvo({ conversation }: Props) {
       if(!data.messageText) {
         return
       }
+      console.log(data)
       setChats((prevChats) => ({
         ...prevChats,
         [conversation._id]: [
@@ -51,9 +52,6 @@ function CurrentConvo({ conversation }: Props) {
       }));
     });
 
-    return () => {
-      pusher.unsubscribe('chat' + conversation._id);
-    };
   }, [conversation._id]);
 
   
