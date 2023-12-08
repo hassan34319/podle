@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 import { StateContext } from "./context/stateContext";
 import Provider from "./context/client-provider";
 import { getSessionServer } from "./utils/getCurrentUser";
+import Script from "next/script";
 
 const satoshi = localFont({
   src: [
@@ -54,6 +55,7 @@ export default async function RootLayout({
           <Provider session={session}>{children}</Provider>
         </StateContext>
       </body>
+      <Script src="https://js.pusher.com/8.0.1/pusher.min.js"/>
     </html>
   );
 }
