@@ -79,7 +79,7 @@ function CurrentConvo({ conversation }: Props) {
 
       await client
       .patch(conversation._id)
-      .set({ messages: updatedConversation })
+      .set({ messages: [...updatedConversation, {sender : senderEmail, messageText : newMessage} ] })
       .commit();
       // Send message via Pusher
       // Update local state
