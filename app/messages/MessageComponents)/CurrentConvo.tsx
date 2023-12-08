@@ -70,17 +70,7 @@ function CurrentConvo({ conversation }: Props) {
   
 
   const sendMessage = async () => {
-    const updatedConversation = {
-      ...conversation,
-      messages: [
-        ...(conversation.messages || []),
-        {
-          messageText: newMessage,
-          sender: senderEmail,
-          _key : generateUniqueKey()
-        }
-      ]
-    };
+    const updatedConversation = chats[conversation._id]
 
     try {
       if(!newMessage) {
@@ -102,7 +92,7 @@ function CurrentConvo({ conversation }: Props) {
 
       await client
       .patch(conversation._id)
-      .set({ messages: updatedConversation.messages })
+      .set({ messages: updatedConversation })
       .commit();
       // Send message via Pusher
 
