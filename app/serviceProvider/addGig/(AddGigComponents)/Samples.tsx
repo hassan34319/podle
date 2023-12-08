@@ -1,3 +1,4 @@
+"use client";
 import { client } from "@/app/utils/client";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
@@ -5,22 +6,27 @@ import React, { useRef, useState } from "react";
 type Props = {
   imageUrls: string[];
   setImageUrls: (imgs: string[]) => void;
-  handleSubmit : ()=> void
+  handleSubmit: () => void;
 };
 
 function Samples({ imageUrls, setImageUrls, handleSubmit }: Props) {
+  const fileInputRef1 = useRef<HTMLInputElement>(null);
+  console.log(imageUrls);
   const [selectedImages, setSelectedImages] = useState<File[]>([]);
-  const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const files = event.target.files;
 
     if (files) {
-      const selectedFiles = Array.from(files).slice(0, 3); // Limit selection to three files
+      const selectedFiles = Array.from(files); // Limit selection to three files
       setSelectedImages(selectedFiles);
 
       const uploadedImageUrls = await Promise.all(
         selectedFiles.map(async (file) => {
           // Simulate uploading the image and retrieve its URL
           const imageUrl = await uploadImageToSanity(file);
+
           return imageUrl;
         })
       );
@@ -44,7 +50,7 @@ function Samples({ imageUrls, setImageUrls, handleSubmit }: Props) {
 
     // Create a Sanity asset document with the uploaded image
     const result = await client.assets.upload("image", file);
-    console.log("URL", result);
+    console.log("URL", result.url);
 
     // Retrieve the URL of the uploaded image
     return result.url;
@@ -66,13 +72,21 @@ function Samples({ imageUrls, setImageUrls, handleSubmit }: Props) {
       </h1>
 
       {/* Single input for multiple images */}
-      <div className="text-sm md:text-base mt-1 md:mt-2 lg:mt-4 w-full xl:w-[50%]">
-        <input
-          type="file"
-          accept="image/*"
-          multiple
-          onChange={handleImageUpload}
-        />
+      <div className="text-sm md:text-base mt-1 md:mt-2 lg:mt-4 w-full ">
+        <button
+          onClick={() => openFileInput(fileInputRef1)}
+          className="h-full px-2 mb-4 md:px-4 py-2 border-2 border-black rounded-lg  font-bold text-black md:py-4 bg-white flex justify-center items-center text-sm md:text-base "
+        >
+          <input
+            ref={fileInputRef1}
+            className="hidden"
+            type="file"
+            accept="image/png, image/jpeg" // Specify accepted image types
+            onChange={handleImageUpload}
+            multiple // Allow multiple file selection
+          />
+          Upload Work
+        </button>
         {imageUrls.map((imageUrl, index) => (
           <div key={index} className="relative inline-block mr-2">
             <Image

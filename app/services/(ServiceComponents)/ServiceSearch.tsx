@@ -8,18 +8,24 @@ import {
 import { useStateContext } from "@/app/context/stateContext";
 type Props = {
   categories: Category[];
-  Gigs : Gig[]
+  Gigs: Gig[];
 };
 
-function ServiceSearch({ categories,Gigs }: Props) {
+function ServiceSearch({ categories, Gigs }: Props) {
   const { selectedCategory, setSelectedCategory } = useStateContext();
   const { searchTitle, setSearchTitle } = useStateContext();
   const { searchLocation, setSearchLocation } = useStateContext();
   const [suggestedTitles, setSuggestedTitles] = useState<string[]>([]);
 
   const handleSearchTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+
     const searchTerm = e.target.value.toLowerCase();
-    setSearchTitle(searchTerm);
+    setSearchTitle(e.target.value);
+
+    if (searchTerm.length === 0) {
+      setSuggestedTitles([]); // Clear suggestions if no input
+      return;
+    }
 
     // Filter Gigs based on entered title keyword
     const matchedTitles = Gigs.filter((gig) =>
@@ -41,27 +47,29 @@ function ServiceSearch({ categories,Gigs }: Props) {
     <div className="lg:mt-[8vh] mt-[4vh] flex flex-row flex-wrap items-center justify-between lg:px-10 px-4">
       {/* Search Input Keywords */}
       <div className="bg-white h-[7vh] md:w-[40%] w-[100%] text-xs md:text-base  border-black border-[0.5px] border-opacity-50 flex items-center justify-between px-2 rounded-lg">
-        <input
-          className={`${inter.className} font-normal px-3 text-black focus:outline-none w-full`}
-          placeholder="Enter Keywords"
-          required
-          value={searchTitle}
-          onChange={handleSearchTitleChange}
-        />
+        <div className="w-full">
+          <input
+            className={`${inter.className} w-full font-normal px-3 text-black focus:outline-none `}
+            placeholder="Enter Keywords"
+            required
+            value={searchTitle}
+            onChange={handleSearchTitleChange}
+          />
+          {suggestedTitles.length > 0 && (
+            <div className="absolute z-10 mt-4 bg-white w-[80%] xl:w-[40%] border-black border-[0.5px] border-opacity-50 rounded-b-lg shadow-lg">
+              {suggestedTitles.map((title, index) => (
+                <div
+                  key={index}
+                  className="p-2 cursor-pointer hover:bg-gray-200"
+                  onClick={() => handleTitleSelect(title)}
+                >
+                  {title}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
         {/* Suggestions */}
-        {suggestedTitles.length > 0 && (
-          <div className="absolute z-10 bg-white w-full border-black border-[0.5px] border-opacity-50 rounded-b-lg shadow-lg">
-            {suggestedTitles.map((title, index) => (
-              <div
-                key={index}
-                className="p-2 cursor-pointer hover:bg-gray-200"
-                onClick={() => handleTitleSelect(title)}
-              >
-                {title}
-              </div>
-            ))}
-          </div>
-        )}
         <MagnifyingGlassIcon
           height={25}
           width={25}

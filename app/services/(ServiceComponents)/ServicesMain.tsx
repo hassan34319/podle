@@ -48,7 +48,7 @@ function ServicesMain({ Gigs }: Props) {
   return (
     <section className="h-full bg-[#EEE8DA] w-full mt-[5vh] pb-[5vh] ">
       {/* Grid for the services cards */}
-      {selectedCategory != "All" && selectedCategory!=""  && <h1 className="mt-5 text-sm text-black text-opacity-50 mx-10">Your Search Returned {filteredData.length} / {Gigs.length} Results</h1>}
+      {!(searchTitle=="" && searchLocation=="" && selectedCategory=="") && <h1 className="pt-5 text-sm text-black text-opacity-50 mx-10">Your Search Returned {filteredData.length} / {Gigs.length} Services</h1>}
       <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-10 gap-y-10 pt-10 mx-10">
         {filteredData.map((item, index) => (
           <ServiceCard
