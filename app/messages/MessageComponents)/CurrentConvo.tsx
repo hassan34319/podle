@@ -8,6 +8,9 @@ import Attach from "./Icon";
 import Reciever from "./Reciever";
 import Send from "./Send";
 import { user } from "next-auth-sanity/schemas";
+import { v4 as uuidv4 } from 'uuid';
+
+
 
 type Props = {
   conversation: Conversation;
@@ -19,6 +22,11 @@ type Message = {
 }
 
 function CurrentConvo({ conversation }: Props) {
+  function generateUniqueKey() {
+    return uuidv4();
+  }
+  
+  // Usage:
   const initialChatsState = {
     [conversation._id]: conversation.messages || [],
   };
@@ -69,7 +77,7 @@ function CurrentConvo({ conversation }: Props) {
         {
           messageText: newMessage,
           sender: senderEmail,
-          _key : Date.now()+ newMessage + senderEmail
+          _key : generateUniqueKey()
         }
       ]
     };
