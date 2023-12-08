@@ -15,15 +15,14 @@ function Navbar({}: Props) {
         <Link href="/services" className="font-medium cursor-pointer">
           Podcast Services
         </Link>
-        <Link href="/faq" className="font-medium cursor-pointer">
-          FAQ
-        </Link>
-        <Link href="/terms" className="font-medium cursor-pointer">
-          Terms Of Service
-        </Link>
         {!session.data && (
           <Link href="/login" className="font-medium cursor-pointer">
             Log In
+          </Link>
+        )}
+        {!session.data && (
+          <Link href="/faq" className="font-medium cursor-pointer">
+            FAQ
           </Link>
         )}
         {session.data && (
