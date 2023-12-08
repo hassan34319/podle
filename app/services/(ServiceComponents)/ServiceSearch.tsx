@@ -8,12 +8,35 @@ import {
 import { useStateContext } from "@/app/context/stateContext";
 type Props = {
   categories: Category[];
+  Gigs : Gig[]
 };
 
-function ServiceSearch({ categories }: Props) {
+function ServiceSearch({ categories,Gigs }: Props) {
   const { selectedCategory, setSelectedCategory } = useStateContext();
   const { searchTitle, setSearchTitle } = useStateContext();
   const { searchLocation, setSearchLocation } = useStateContext();
+  const [suggestedTitles, setSuggestedTitles] = useState<string[]>([]);
+
+  const handleSearchTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const searchTerm = e.target.value.toLowerCase();
+    setSearchTitle(searchTerm);
+
+    // Filter Gigs based on entered title keyword
+    const matchedTitles = Gigs.filter((gig) =>
+      gig.title.toLowerCase().includes(searchTerm)
+    );
+
+    // Extract matched titles to suggest
+    const matchedTitlesList = matchedTitles.map((gig) => gig.title);
+    setSuggestedTitles(matchedTitlesList);
+  };
+
+  const handleTitleSelect = (title: string) => {
+    setSearchTitle(title);
+    // Clear suggestions on title selection if needed
+    setSuggestedTitles([]);
+  };
+
   return (
     <div className="lg:mt-[8vh] mt-[4vh] flex flex-row flex-wrap items-center justify-between lg:px-10 px-4">
       {/* Search Input Keywords */}
@@ -25,6 +48,20 @@ function ServiceSearch({ categories }: Props) {
           value={searchTitle}
           onChange={(e) => setSearchTitle(e.target.value)}
         />
+        {/* Suggestions */}
+        {suggestedTitles.length > 0 && (
+          <div className="absolute z-10 bg-white w-full border-black border-[0.5px] border-opacity-50 rounded-b-lg shadow-lg">
+            {suggestedTitles.map((title, index) => (
+              <div
+                key={index}
+                className="p-2 cursor-pointer hover:bg-gray-200"
+                onClick={() => handleTitleSelect(title)}
+              >
+                {title}
+              </div>
+            ))}
+          </div>
+        )}
         <MagnifyingGlassIcon
           height={25}
           width={25}

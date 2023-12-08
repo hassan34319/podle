@@ -176,14 +176,14 @@ function GigDisplay({ gig }: Props) {
           <span key={index}>{star}</span>
         ))}
         <p className="text-black text-sm md:text-base font-semibold">
-          {gig.rating}
+          {gig.rating || 0.0}
         </p>
         <p className="text-black text-sm md:text-base font-semibold">
-          ({gig.numOrders})
+          ({gig.numOrders || "0"})
         </p>
         <p className="text-black text-sm md:text-base font semibold">
           {" "}
-          | 2 Orders in Queue
+          {gig.category}
         </p>
       </div>
       <div className="flex xl:flex-row xl:justify-between flex-col mt-8  ">
