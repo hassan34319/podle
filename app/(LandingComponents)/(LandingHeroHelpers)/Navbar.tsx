@@ -31,6 +31,11 @@ function Navbar({}: Props) {
             Dashboard
           </Link>
         )}
+        {session.data && (
+          <Link href={`/messages`} className="font-medium cursor-pointer">
+            Messages
+          </Link>
+        )}
       </div>
       {!session.data && 
       <Link

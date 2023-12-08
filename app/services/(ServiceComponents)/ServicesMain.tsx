@@ -17,7 +17,7 @@ function ServicesMain({Gigs}: Props) {
   const filterDataset = (data : Gig[]) => {
     return data.filter((item) => {
       // Filtering logic based on multiple criteria
-      const matchesCategory = selectedCategory ? item.category.includes(selectedCategory) : true;
+      const matchesCategory = selectedCategory ? item.category.includes(selectedCategory) || selectedCategory=="All" : true;
       const matchesTitle = searchTitle ? item.title.toLowerCase().includes(searchTitle.toLowerCase()) : true;
       const matchesLocation = searchLocation ? item.location.includes(searchLocation) : true;
   
