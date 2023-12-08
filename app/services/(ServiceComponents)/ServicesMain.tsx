@@ -44,9 +44,11 @@ function ServicesMain({ Gigs }: Props) {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
+
   return (
     <section className="h-full bg-[#EEE8DA] w-full mt-[5vh] pb-[5vh] ">
       {/* Grid for the services cards */}
+      <h1 className="mb-2 mt-2 text-sm text-black text-opacity-50">Your Search Returned {filteredData.length} / {Gigs.length} Results</h1>
       <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-10 gap-y-10 pt-10 mx-10">
         {filteredData.map((item, index) => (
           <ServiceCard
