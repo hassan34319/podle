@@ -76,6 +76,12 @@ function CurrentConvo({ conversation }: Props) {
       if(!newMessage) {
         return;
       }
+
+      await client
+      .patch(conversation._id)
+      .set({ messages: updatedConversation })
+      .commit();
+      // Send message via Pusher
       // Update local state
 
       await fetch('/api/pusherMain', {
@@ -90,11 +96,7 @@ function CurrentConvo({ conversation }: Props) {
         })
       });
 
-      await client
-      .patch(conversation._id)
-      .set({ messages: updatedConversation })
-      .commit();
-      // Send message via Pusher
+
 
       setNewMessage('')
       
