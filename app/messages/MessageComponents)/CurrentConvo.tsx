@@ -19,10 +19,14 @@ type Message = {
 }
 
 function CurrentConvo({ conversation }: Props) {
+  const initialChatsState = {
+    [conversation._id]: conversation.messages || [],
+  };
+  
+  const [chats, setChats] = useState<{ [key: string]: Message[] }>(initialChatsState);
   const session = useSession();
   const senderEmail = session.data?.user?.email;
   const [newMessage, setNewMessage] = useState("");
-  const [chats, setChats] = useState<{ [key: string]: Message[] }>({});
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
