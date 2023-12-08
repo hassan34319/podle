@@ -133,13 +133,13 @@ function GigDisplay({ gig }: Props) {
 
       // Redirect to checkout
       const stripe = await getStripe();
+      setLoading(false);
       const { error } = await stripe!.redirectToCheckout({
         // Make the id field from the Checkout Session creation API response
         // available to this file, so you can provide it as parameter here
         // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
         sessionId: checkoutSession?.id, //This is is used as the query parameter to the success page.
       });
-      setLoading(false);
       // If `redirectToCheckout` fails due to a browser or network
       // error, display the localized error message to your customer
       // using `error.message`.

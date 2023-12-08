@@ -17,7 +17,6 @@ interface StripeProduct {
     unit_amount: number;
   } | null;
 }
-export const dynamic = "force-dynamic";
 
 async function success({
   params,
@@ -48,7 +47,6 @@ async function success({
     currency: "USD",
   });
 
-  redirect(`/${session?.user?.name}/order`)
   return (
     <main className="h-max bg-black pb-10 text-white ">
       {/* Hero Section */}

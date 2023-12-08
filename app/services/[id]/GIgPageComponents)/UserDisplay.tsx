@@ -12,7 +12,7 @@ type Props = {
 function UserDisplay({ user,rating,reviews }: Props) {
   return (
     <main className="mt-2 md:mt-4 lg:mt-8 xl:px-8 px-4 pb-4 lg:pb-8 xl:w-[60%] mb-4 md:mb-8 text-black">
-      <div className="w-full flex flex-row border-t-black border-l-0 border-r-0 border-b-black border-[1px] border-opacity-[30%] py-4 md:py-8">
+      <div className="w-full flex flex-row gap-x-4 border-t-black border-l-0 border-r-0 border-b-black border-[1px] border-opacity-[30%] py-4 md:py-8">
         <div className="relative xl:w-[20%] xl:h-[8rem] w-[30%] h-[6rem] md:h-[8rem]">
           <Image
             src={urlFor(user.logo).url()}
