@@ -66,7 +66,7 @@ function CurrentConvo({ conversation }: Props) {
         {
           messageText: newMessage,
           sender: senderEmail,
-          key : Date.now()+ newMessage + senderEmail
+          _key : Date.now()+ newMessage + senderEmail
         }
       ]
     };
