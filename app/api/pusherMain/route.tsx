@@ -25,15 +25,15 @@ export async function POST(
     request: Request
 ) {
     const body = await request.json();
-    const { conversationId, message, sender } = body;
-    console.log(conversationId,message,sender)
+    const { conversationId, messageText, sender } = body;
+    console.log(conversationId,messageText,sender)
 
 
 
     try {
             const response = await pusher.trigger('chat'+ conversationId, 'chat-event', {
                 conversationId,
-                message,
+                messageText,
                 sender
               });
 
