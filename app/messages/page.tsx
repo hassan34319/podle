@@ -48,7 +48,7 @@ async function page({}: Props) {
           return {
             ...conversation,
             otherUserName: otherUser?.userName || "No Username",
-            otherUserImage: otherUser?.profileImage || "No Image content",
+            otherUserImage: otherUser?.profileImage || "/proff.png",
             otherUserType : 'Content Creator'
           };
         } else {
@@ -61,7 +61,7 @@ async function page({}: Props) {
             ...conversation,
             otherUserName: otherUser2?.name || "No Username",
             otherUserImage:
-              urlFor(otherUser2?.logo).url() || "No Image claimed",
+              urlFor(otherUser2?.logo).url() || "/proff.png",
               otherUserType : 'Service Provider'
           };
         }

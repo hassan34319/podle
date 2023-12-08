@@ -108,7 +108,7 @@ function SelectServicesContent({user}: Props) {
             </h1>
             <div className=" text-black pb-4  h-max lg:w-[85%] md:w-[90%] w-[90%] bg-[#E8DFCC] rounded-xl mt-[5vh] flex flex-col items-center pt-10 md:pt-0">
               <h1 className="mt-2 md:mt-4 lg:mt-8 font-extrabold md:text-3xl text-xl w-[90%] mx-auto text-center">
-                Write a breif description about your business
+                Write a brief description about your business
               </h1>
               <h1 className="lg:text-lg text-sm mt-2 md:mt-4 lg:mt-8 w-[90%] mx-auto text-center">
                 This will be beneficial for creators searching for a business.
