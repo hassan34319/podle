@@ -31,18 +31,15 @@ function CurrentConvo({ conversation }: Props) {
 
 
 
-  useEffect(() => {
-    const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_APP_KEY!, {
+    var pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_APP_KEY as string, {
       cluster: 'mt1'
     });
 
     const channel = pusher.subscribe('chat' + conversation._id);
 
     channel.bind('chat-event', function (data: Message) {
-      if(!data.messageText) {
-        return
-      }
-      console.log(data)
+
+
       setChats((prevChats) => ({
         ...prevChats,
         [conversation._id]: [
@@ -52,7 +49,6 @@ function CurrentConvo({ conversation }: Props) {
       }));
     });
 
-  }, [conversation._id]);
 
   
 
@@ -74,13 +70,6 @@ function CurrentConvo({ conversation }: Props) {
         return;
       }
       // Update local state
-      setChats((prevChats) => ({
-        ...prevChats,
-        [conversation._id]: [
-          ...(prevChats[conversation._id] || conversation.messages || []),
-          { sender: senderEmail || '', messageText: newMessage },
-        ],
-      }));
 
       await fetch('/api/pusherMain', {
         method: 'POST',
