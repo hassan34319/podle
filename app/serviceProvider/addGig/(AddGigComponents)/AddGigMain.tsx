@@ -2,6 +2,7 @@
 import { client } from "@/app/utils/client";
 import { inter } from "@/app/utils/inter";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import Overview from "./Overview";
 import Pricing from "./Pricing";
@@ -61,6 +62,7 @@ function AddGigMain({categories}: Props) {
     service5: false,
   });
 
+  const router = useRouter()
   // States for price inputs
   const [basicPrice, setBasicPrice] = useState(0);
   const [standardPrice, setStandardPrice] = useState(0);
@@ -204,7 +206,7 @@ function AddGigMain({categories}: Props) {
       setImageUrls([]);
       // Clear other form state as needed
 
-      alert("Gig created successfully!");
+      router.push("/serviceProvider/dashboard")
     } catch (error) {
       console.error("Error creating gig:", error);
       alert("Failed to create gig. Please try again later.");
