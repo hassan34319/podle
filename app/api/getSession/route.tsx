@@ -23,6 +23,8 @@ const sanityReq = async (order: EventApplicant) => {
   const response = await client.create({
     ...order,
   });
+
+  console.log(response, "From sanity")
 };
 
 
@@ -41,7 +43,7 @@ export async function GET(req: Request) {
       );
       const metaData = sessionDetails?.metadata
       const order = JSON.parse(metaData!.order)
-      const data = sanityReq(
+      const data = await sanityReq(
         order
       );
      
