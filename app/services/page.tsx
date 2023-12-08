@@ -40,7 +40,7 @@ async function ServicePage({}: Props) {
   return (
     <main className="top-0 mt-0 min-h-[100vh] text-black bg-[#E8DFCC]">
       <LoggedNavbar />
-      <ServiceSearch categories={categories} />
+      <ServiceSearch categories={categories} Gigs={gigs} />
       <ServiceCategories categories={categories} />
       <ServicesMain Gigs={gigs} />
       <Footer />

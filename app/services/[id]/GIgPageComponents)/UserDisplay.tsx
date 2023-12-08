@@ -2,6 +2,7 @@ import { renderRatingStars } from "@/app/utils/stars";
 import { urlFor } from "@/app/utils/UrlImage";
 import Image from "next/image";
 import React from "react";
+import { Link } from "react-feather";
 
 type Props = {
   user: ServiceProvider;
@@ -32,9 +33,6 @@ function UserDisplay({ user,rating,reviews }: Props) {
               ({reviews && reviews.length > 0 && reviews.length})
             </p>
           </div>
-          <button className="md:px-2 md:py-2 px-1 py-1 border-black border-[1px] rounded-md text-center text-sm md:text-base">
-                Contact Me
-          </button>
         </div>
       </div>
     </main>
