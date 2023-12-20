@@ -34,7 +34,7 @@ function Accept({ order }: Props) {
         buyerEmail: order.buyerEmail,
         sellerEmail: order.sellerEmail,
         amount: order.price * 0.9, // Replace with the actual amount
-        status: 'clearing', // Replace with the status
+        status: 'Clearing', // Replace with the status
         gigID: order.gigID, // Replace with the gig ID
       };
       
