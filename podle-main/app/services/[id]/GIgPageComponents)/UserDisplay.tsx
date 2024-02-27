@@ -16,7 +16,7 @@ function UserDisplay({ user,rating,reviews }: Props) {
       <div className="w-full flex flex-row gap-x-4 border-t-black border-l-0 border-r-0 border-b-black border-[1px] border-opacity-[30%] py-4 md:py-8">
         <div className="relative xl:w-[20%] xl:h-[8rem] w-[30%] h-[6rem] md:h-[8rem]">
           <Image
-            src={urlFor(user.logo).url()}
+            src={user.logo}
             alt="Picture User"
             fill
             className="object-contain"

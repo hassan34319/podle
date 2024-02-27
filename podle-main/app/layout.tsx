@@ -54,20 +54,6 @@ export default async function RootLayout({
 
 
 
-  async function getAutoBusinessCount() {
-    try {
-      // Fetch all documents of type "autoBusiness" and count the number of results
-      const count = await client.fetch(`count(*[_type == "autoBusiness"])`);
-      console.log('Count of autoBusiness documents:', count);
-      return count;
-    } catch (error) {
-      console.error('Error fetching document count:', error);
-      return null;
-    }
-  }
-  
-  // Call the function to get the count
-  getAutoBusinessCount();
   return (
     <html lang="en">
       <body className={`${satoshi.className} top-0`}>
