@@ -52,7 +52,7 @@ function SecondaryNavbar({}: Props) {
 
         if (user) {
           console.log("Document found:", user);
-          const imageUrl = urlFor(user.logo).url();
+          const imageUrl = user.logo;
           setImageUrl(imageUrl);
         } else {
           console.log("Document not found");
