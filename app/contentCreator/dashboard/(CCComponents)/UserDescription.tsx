@@ -1,0 +1,132 @@
+"use client";
+import { client } from "@/app/utils/client";
+import { inter } from "@/app/utils/inter";
+import { renderRatingStars } from "@/app/utils/stars";
+import { useState } from "react";
+import { MdOutlineVerifiedUser } from "react-icons/md";
+
+type Props = {
+  user: ContentCreator;
+};
+
+function UserDescription({ user }: Props) {
+  const owner = true;
+  const [editable, setEditable] = useState(false); // State to track if the description is editable
+  const [description, setDescription] = useState(user.description); // Replace with your default description
+
+  const handleEditDescription = () => {
+    setEditable(true);
+  };
+
+  const handleSaveDescription = () => {
+    setEditable(false);
+    const updateData = {
+      description : description,
+      // Add other fields you want to update here
+    };
+    
+    // Perform the update
+    client
+      .patch(user._id)
+      .set(updateData)
+      .commit()
+      .then(response => console.log('Update successful:', response))
+      .catch(error => console.error('Error updating document:', error));
+
+
+    // Implement logic to save the description, e.g., send it to the server
+  };
+
+  return (
+    <div
+      className={`px-[8%] flex flex-col h-full justify-between ${inter.className} text-lg md:w-[64%] w-full md:pb-[8vh] `}
+    >
+      {/* Name and other details */}
+      <div className="flex flex-col w-full mt-[6vh]">
+        {/* Name and Rating */}
+        <div className="flex md:flex-row flex-col gap-y-2 md:gap-y-0 justify-between w-full">
+          {/* Name */}
+          <div className="w-full flex flex-row gap-x-4 md:block md:gap-x-0">
+            <p className="text-[#16A235] font-medium mb-[2vh]">Name :</p>
+            <p className="text-black font-semibold">{user.userName}</p>
+          </div>
+          {/* Rating */}
+          <div className="w-full flex flex-row gap-x-4 md:block md:gap-x-0">
+            <p className="text-[#16A235] font-medium mb-[2vh] ">Rating : </p>
+            <div className="flex flex-row space-x-2">
+              {renderRatingStars(5).map((star, index) => (
+                <span key={index}>{star}</span>
+              ))}
+              <p className="text-black text-sm font-semibold">(5.0)</p>
+            </div>
+          </div>
+        </div>
+        {/* Services and verified */}
+        <div className="flex md:flex-row flex-col gap-y-2 md:gap-y-0 justify-between w-full md:mt-[8vh]">
+          {/* Services */}
+          <div className="w-full flex flex-row gap-x-4 md:block md:gap-x-0">
+            <p className="text-[#16A235] font-medium mb-[2vh]">
+              On Podle Since
+            </p>
+            <p className="text-black font-semibold">
+              {new Date(user._createdAt).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </p>
+          </div>
+          {/* Verified */}
+          <div className="w-full flex flex-row gap-x-4 md:block md:gap-x-0">
+            <p className="text-[#16A235] font-medium mb-[2vh] flex flex-row ">
+              Verified Buyer{" "}
+              <span>
+                <MdOutlineVerifiedUser
+                  height={6}
+                  width={6}
+                  className="text-black ml-2"
+                />
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+      {/* Description */}
+      <div className="md:mb-[6vh] mb-[3vh]">
+        <p className="text-[#16A235] font-medium mb-[2vh]">Description</p>
+        {editable ? (
+          <>
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="border border-gray-300 p-2 mb-2 w-full"
+            />
+            <button
+              onClick={handleSaveDescription}
+              className="bg-blue-500 text-white px-3 py-1 rounded"
+            >
+              Save
+            </button>
+          </>
+        ) : (
+          <>
+            <p className="text-black font-normal">{description}</p>
+            <button onClick={handleEditDescription} className="text-blue-500">
+              Edit
+            </button>
+          </>
+        )}
+      </div>
+      {!owner && (
+        <button
+          className={`bg-[#16A235] mt-[3vh] md:hidden border-white hover:bg-opacity-80 rounded-lg border-[0.5px] font-medium  ${inter.className} text-white w-full py-4 `}
+          // onClick={() => router.push("/selectServices")}
+        >
+          Send Message
+        </button>
+      )}
+    </div>
+  );
+}
+
+export default UserDescription;
