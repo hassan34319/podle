@@ -5,32 +5,24 @@ import { urlFor } from "@/app/utils/UrlImage";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import React from "react";
-import Footer from "../../(UIComponents)/Footer";
-import MobileLogo from "../../(UIComponents)/MobileLogo";
-import MobileNavbar from "../../(UIComponents)/MobileNavbar";
-import SecondaryNavbar from "../../(UIComponents)/SecondaryNavbar";
-import UserDetails from "./(UserComponents)/UserDetails";
-import UserReviews from "./(UserComponents)/UserReviews";
-import UserGigs from "./(UserComponents)/UserSamples";
-import UserSamples from "./(UserComponents)/UserSamples";
+import Footer from "../../../(UIComponents)/Footer";
+import MobileLogo from "../../../(UIComponents)/MobileLogo";
+import MobileNavbar from "../../../(UIComponents)/MobileNavbar";
+import SecondaryNavbar from "../../../(UIComponents)/SecondaryNavbar";
+import UserDetails from "./(IndivPageComponents)/UserDetails";
+import UserReviews from "./(IndivPageComponents)/UserReviews";
+import UserGigs from "./(IndivPageComponents)/UserSamples";
+import UserSamples from "./(IndivPageComponents)/UserSamples";
 
 type Props = {};
 
-async function UserPage({}: Props) {
-  const session = await getSessionServer();
-  const searchEmail = session?.user?.email; // Replace with the email you want to search
+async function UserPage({ params }: { params: { id: string } }) {
+    const {id} = params
 
-  if (!session) {
-    redirect("/login");
-  }
-
-  if (session.user?.name === "contentCreator") {
-    redirect("/contentCreator/dashboard");
-  }
   // Fetch the document based on the email field
-  const user = await client
-    .fetch('*[_type == "claimedBusiness" && email == $email][0]', {
-      email: searchEmail,
+  const business = await client
+    .fetch('*[_type == "autoBusiness" && _id == $id][0]', {
+      id : id,
     })
     .then((document) => {
       if (document) {
@@ -48,25 +40,10 @@ async function UserPage({}: Props) {
   //   redirect("/claimedBusiness");
   // }
 
-  const gigs = await client
-    .fetch('*[_type == "gig" && sellerEmail == $email]', {
-      email: searchEmail,
-    })
-    .then((document) => {
-      if (document) {
-        console.log("Document found:", document);
-        return document;
-      } else {
-        console.log("Document not found");
-      }
-    })
-    .catch((error) => {
-      console.error("Error fetching document:", error);
-    });
 
   const reviews = await client
-    .fetch('*[_type == "review" && sellerEmail == $email]', {
-      email: searchEmail,
+    .fetch('*[_type == "review" && businessName == $name]', {
+      name : business.name,
     })
     .catch((error) => {
       console.error("Error fetching reviews:", error);
@@ -98,7 +75,7 @@ async function UserPage({}: Props) {
           reviewText: review.reviewText,
           reviewRating: review.reviewRating,
           buyerName: buyerDetails.name, // Assuming 'name' field exists in claimedBusiness
-          buyerImage: urlFor(buyerDetails.logo).url(), // Assuming 'logo' field exists in claimedBusiness
+          buyerImage: buyerDetails.logo, // Assuming 'logo' field exists in claimedBusiness
           date : review._createdAt
         });
 
@@ -143,9 +120,8 @@ async function UserPage({}: Props) {
   return (
     <main className="top-0 mt-0 min-h-[100vh] text-black bg-[#E8DFCC]">
       <LoggedNavbar />
-      <UserDetails user={user} rating={cummulativeRating} reviews={Reviews} />
-      <UserGigs gigs={gigs} />
-      <UserReviews  reviews={Reviews} rating={cummulativeRating} />
+      <UserDetails user={business} rating={cummulativeRating} reviews={Reviews} unclaimed={true} />
+      <UserReviews  reviews={Reviews} rating={cummulativeRating} title={business.name} />
       <Footer />
     </main>
   );

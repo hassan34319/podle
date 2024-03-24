@@ -16,7 +16,6 @@ function ClaimBusinessAuto({ claimAuto, setClaimAuto, claimManual,setClaimManual
   const router = useRouter()
   const { business } = useStateContext();
   const [screen2, setScreen2] = useState(false)
-  console.log(business);
   const handleSkipClick = () => {
     setClaimAuto(false)
   }

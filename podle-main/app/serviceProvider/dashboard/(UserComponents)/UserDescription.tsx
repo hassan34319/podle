@@ -3,7 +3,7 @@ import { client } from "@/app/utils/client";
 import { inter } from "@/app/utils/inter";
 import { renderRatingStars } from "@/app/utils/stars";
 import { useState } from "react";
-import { MdOutlineVerifiedUser } from "react-icons/md";
+import { MdArrowUpward, MdFireplace, MdOutlineVerifiedUser } from "react-icons/md";
 
 type Props = {
   user: ServiceProvider;
@@ -85,18 +85,16 @@ function UserDescription({ user, rating, reviews }: Props) {
               })}
             </p>
           </div>
-          {/* Verified */}
+{/* Tag */}
           <div className="w-full flex flex-row gap-x-4 md:block md:gap-x-0">
-            <p className="text-[#16A235] font-medium mb-[2vh] flex flex-row ">
-              Verified Business{" "}
-              <span>
-                <MdOutlineVerifiedUser
-                  height={6}
-                  width={6}
-                  className="text-black ml-2"
-                />
-              </span>
-            </p>
+          <p className="text-black font-medium mb-[2vh] flex flex-row ">
+      {user.specialTag}
+      <span>
+        {user.specialTag === "Hot" && <MdFireplace height={20} width={20} className="text-red-500 ml-2" />}
+        {user.specialTag === "Top Rated" && <MdArrowUpward height={20} width={20} className="text-blue-500 ml-2" />}
+        {user.specialTag == "Recommended" && <MdOutlineVerifiedUser height={20} width={20} className="text-black ml-2" />}
+      </span>
+    </p>
           </div>
         </div>
       </div>

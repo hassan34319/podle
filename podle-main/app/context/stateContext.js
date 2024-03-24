@@ -22,6 +22,9 @@ export const StateContext = ({ children }) => {
   const [selectedCategory, putSelectedCategory] = useState("");
   const [searchTitle, putSearchTitle] =useState("")
   const [searchLocation, putSearchLocation] = useState("")
+  const [specialTag, putSpecialTag] = useState("");
+  const [searchName, putSearchName] =useState("")
+  const [searchService, putSearchService] = useState("")
   const [selectedPage, putSelectedPage] = useState(1)
   const [samplePage, putSamplePage] = useState(1)
   const [selectedArrow, putSelectedArrow] = useState("")
@@ -39,6 +42,15 @@ export const StateContext = ({ children }) => {
     }
     const setSearchTitle = (text) => {
       putSearchTitle(text)
+    }
+    const setSpecialTag = (text) => {
+      putSpecialTag(text)
+    }
+    const setSearchService = (text) => {
+      putSearchService(text)
+    }
+    const setSearchName = (text) => {
+      putSearchName(text)
     }
     const setSelectedPage = (num) => {
       putSelectedPage(num)
@@ -73,7 +85,13 @@ export const StateContext = ({ children }) => {
         searchLocation,
         searchTitle,
         setSearchLocation,
-        setSearchTitle
+        setSearchTitle,
+        specialTag,
+        setSpecialTag,
+        searchService,
+        setSearchService,
+        searchName,
+        setSearchName
       }}
     >
       {children}

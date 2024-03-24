@@ -67,19 +67,46 @@ function BusinessFormAuto({}: Props) {
         description: business.description || "No desc",
         logo: business.logo!,
         services: business.services || [],
-        specialTag: business.specialTag,
+        specialTag: business.specialTags,
       };
 
-      const result = await client
-        .patch(user._id)
-        .set(BusinessInformation)
-        .commit()
-        .then((response) => console.log("Update successful:", response))
-        .then((response) => router.push("/serviceProvider/dashboard"))
-        .then((reponse) => setLoading(false))
-        .catch((error) => console.error("Error updating document:", error));
+      // Execute the query to find the document ID
+      const businessId = business._id;
 
-      setLoading(false);
+      // If businessId is found, proceed with deletion and update
+      if (businessId && businessId.length > 0) {
+        // Delete the document with the found ID
+        const result = await client
+          .delete(businessId)
+          .then((response) => {
+            console.log("Deletion successful:", response);
+            // Proceed with updating the document or performing other actions
+            return client.patch(user._id).set(BusinessInformation).commit();
+          })
+          .then(() => {
+            console.log("Update successful");
+            router.push("/serviceProvider/dashboard");
+          })
+          .catch((error) => console.error("Error:", error));
+      } else {
+        console.log("No document found with the provided business name");
+      }
+      // const query = `*[_type == 'review' && businessName == $businessName]{_id}`;
+      // const params = { businessName: business.name };
+      // const reviews = await client.fetch(query, params);
+
+    
+      // // Step 2: Add the email as sellerEmail to these reviews
+      // const updatePromises = await reviews.map((review: { _id: string }) => {
+      //   return client
+      //     .patch(review._id)
+      //     .set({ sellerEmail: searchEmail }) // Assuming userEmail holds the email to be added
+      //     .commit();
+      // });
+
+
+        // router.push("/serviceProvider/dashboard")
+
     } else {
       setError("Feilds are missing");
     }

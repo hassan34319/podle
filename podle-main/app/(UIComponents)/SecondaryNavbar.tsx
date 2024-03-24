@@ -112,9 +112,18 @@ function SecondaryNavbar({}: Props) {
               pathname === "/login" ? "text-[#16A235]" : ""
             }`}
           >
-            Login
+           Login
           </Link>
         )}
+
+<Link
+            href="/serviceProviders"
+            className={`font-medium cursor-pointer ${
+              pathname === "/serviceProviders" ? "text-[#16A235]" : ""
+            }`}
+          >
+             Brands
+          </Link>
        
         <Link
           href="/services"

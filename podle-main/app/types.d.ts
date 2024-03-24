@@ -1,4 +1,5 @@
 interface BusinessInfo {
+  _id? : string;
     name: string;
     streetAddress?: string;
     city?: string;
@@ -10,6 +11,7 @@ interface BusinessInfo {
     description? : string;
     services? : string[]
     specialTag? : string
+    specialTags? : string
   }
 
   interface ContentCreator {
@@ -50,6 +52,20 @@ interface BusinessInfo {
     };
   };
 }
+
+interface AutoBusiness {
+  _id : string;
+  name: string;
+  description?: string;
+  specialTag?: string;
+  services?: string[];
+  logo?: string;
+  searchResult: string;
+  rating? : number;
+  claimed? : boolean;
+  // Add other fields as needed
+}
+
 interface Review {
   reviewText: string;
   reviewRating: number;

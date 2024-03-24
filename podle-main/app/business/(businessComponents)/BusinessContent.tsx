@@ -24,9 +24,10 @@ type Image = {
 type Props = {
   autoBusiness: BusinessInfo[];
   createImage: Image[];
+  business : BusinessInfo;
 };
 
-function BusinessContent({ autoBusiness, createImage }: Props) {
+function BusinessContent({ autoBusiness, createImage,business }: Props) {
   const [claimAuto, setClaimAuto] = useState(false);
   const [claimManual, setClaimManual] = useState(false);
   const [signUpService, setSignUpService] = useState(true);
@@ -35,6 +36,7 @@ function BusinessContent({ autoBusiness, createImage }: Props) {
   const [username, setUsername] = useState("");
   const [phone, setPhone] = useState("");
   const [error,setError] = useState(false)
+  
 
   const checkEmailExists = async (
     emailToCheck: string,
@@ -173,6 +175,7 @@ function BusinessContent({ autoBusiness, createImage }: Props) {
             claimManual={claimManual}
             setClaimManual={setClaimManual}
             autoBusiness={autoBusiness}
+            business={business}
           />
           <ClaimBusinessAuto
             claimAuto={claimAuto}

@@ -8,8 +8,32 @@ import BusinessContent from "./(businessComponents)/BusinessContent";
 
 type Props = {};
 export const revalidate = 60;
-async function BusinessPage({}: Props) {
+async function BusinessPage({
+  searchParams,
+}: {
+  searchParams: { id: string };
+}) {
   const backgroundImageUrl = "/bg_business.jpg"; // Replace 'jpg' with the actual file extension of your image.
+
+  const { id } = searchParams;
+
+  let clientFetch = null;
+  if (id) {
+    const query = `*[_type == 'autoBusiness' && _id == $id]`;
+    const params = { id };
+
+    clientFetch = await client
+    .fetch(query, params)
+    .then((result) => {
+      // Handle the result
+      return result; // Return the result to store it in clientFetch
+    })
+    .catch((error) => {
+      // Handle errors
+      console.error("Error:", error);
+      throw error; // Rethrow the error to be caught by the caller
+    });
+  }
 
   const query = `*[_type == 'autoBusiness']`;
 
@@ -22,7 +46,7 @@ async function BusinessPage({}: Props) {
   }
 `);
 
-    console.log(autoBusinesses)
+  console.log(autoBusinesses);
   return (
     <main
       className="bg-cover bg-top min-h-[100vh] "
@@ -33,7 +57,11 @@ async function BusinessPage({}: Props) {
       {/* Logo */}
 
       {/* Main content based on conditions */}
-      <BusinessContent autoBusiness={autoBusinesses} createImage={createImage} />
+      <BusinessContent
+        business={clientFetch[0]}
+        autoBusiness={autoBusinesses}
+        createImage={createImage}
+      />
     </main>
   );
 }

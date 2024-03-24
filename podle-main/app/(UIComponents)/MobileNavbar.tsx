@@ -61,6 +61,9 @@ function MobileNavbar({}: Props) {
             <Link className="text-white my-2" href="/services">
               Podcast Services
             </Link>
+            <Link className="text-white my-2" href="/serviceProviders">
+              Brands
+            </Link>
 
             {session.data && (
               <Link  className="text-white my-2" href="/messages">

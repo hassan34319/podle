@@ -52,8 +52,7 @@ export default async function RootLayout({
 }) {
   const session = await getSessionServer();
 
-
-
+  
   return (
     <html lang="en">
       <body className={`${satoshi.className} top-0`}>

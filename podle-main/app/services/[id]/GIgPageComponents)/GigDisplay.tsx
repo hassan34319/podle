@@ -36,7 +36,7 @@ function GigDisplay({ gig }: Props) {
 
   const handleSend = async () => {
     if (!message || !gig || !gig.sellerEmail) {
-      router.push("/login")
+      // router.push("/login")
       return;
     }
 

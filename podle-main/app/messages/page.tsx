@@ -61,7 +61,7 @@ async function page({}: Props) {
             ...conversation,
             otherUserName: otherUser2?.name || "No Username",
             otherUserImage:
-              urlFor(otherUser2?.logo).url() || "/proff.png",
+              otherUser2.logo || "/proff.png",
               otherUserType : 'Service Provider'
           };
         }

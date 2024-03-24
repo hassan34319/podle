@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { inter } from "../../utils/inter";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { numberToWords } from "../../utils/numToWords.js";
@@ -14,6 +14,7 @@ type Props = {
   claimManual: boolean;
   setClaimManual: (value: boolean) => void;
   autoBusiness : BusinessInfo[];
+  business : BusinessInfo | undefined
 };
 
 
@@ -22,7 +23,8 @@ function SearchBusiness({
   setClaimAuto,
   claimManual,
   setClaimManual,
-  autoBusiness
+  autoBusiness,
+  business
 }: Props) {
   const router = useRouter();
   //   The actual input inputted by the users
@@ -33,12 +35,26 @@ function SearchBusiness({
   const [showNoResultsMessage, setShowNoResultsMessage] =
     useState<boolean>(false);
   // The selected business by user from context
-  const { addBusiness, business } = useStateContext();
+  const { addBusiness } = useStateContext();
 
+  useEffect(() => {
+    if (business != null) {
+      addBusiness({
+        _id: business._id,
+        name: business.name,
+        logo: business.logo,
+        searchResult: business.searchResult,
+        description: business.description,
+        services: business.services,
+        specialTags: business.specialTag // corrected from 'specialTags' to 'specialTag'
+      });
+      setClaimAuto(true);
+    }
+  }, []);
+  
 
   // Calculate the search result for each entry
 
-  console.log(autoBusiness), "From Search";
 
   //  Handles the change in user input
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,8 +72,10 @@ function SearchBusiness({
   };
   //   Handles when user Selects a business
   const handleSelectBusiness = (selectedBusiness : BusinessInfo) => {
+    console.log(selectedBusiness, "Selected")
     // Adds Business to context
     addBusiness( {
+      _id : selectedBusiness._id,
       name: selectedBusiness.name,
       logo: selectedBusiness.logo,
       searchResult : selectedBusiness.searchResult,
@@ -69,7 +87,6 @@ function SearchBusiness({
     );
     // Changes Component to claim component
     setClaimAuto(true);
-    console.log("business", business);
   };
   // When business is not found
   const handleAddNewBusiness = () => {
